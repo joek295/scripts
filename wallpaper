@@ -1,3 +1,0 @@
-#!/bin/bash
-DIR=/home/joe/wallpapers
-find $DIR -type f -print | shuf -n 1 | xargs feh --bg-scale
