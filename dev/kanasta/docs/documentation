@@ -1,0 +1,22 @@
+Modules to write for kanasta:
+  kanasta - imports all other modules, defines global variables, and runs kanastamenu
+  kanastamenu - the menu which you see when you start kanasta. not yet begun.
+  kanastasetup - sets up the game of kanasta. the phase of the game after dealing but before normal gameplay.
+  kanastaplay - the normal course of play. picking up, melding, discarding etc.
+  kanasta_ai - the ai which deals with non-human players' games.
+  kanastascore - automatically tallies up the score after each hand.
+  
+Variables referred to throughout kanasta code:
+  deck - the stack
+  discards - the discard pile
+  team1 - the cards melded by team1
+  player1 - the cards in player1's hand
+  
+Flags for cards:
+  freeze - can freeze the discard pile
+  pick-up - can be picked up from discard pile
+  no-pickup - cannot be picked up from discard pile
+  meld - can be melded
+  wild - can be used as a wild card
+  5/10/20/50/100 - number of points a card is worth
+  

@@ -1,0 +1,3 @@
+#!/bin/bash
+# Replace WM with fluxbox
+pkill "fluxbox|jwm|openbox|pekwm|ratpoison" && startfluxbox

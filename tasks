@@ -1,0 +1,6 @@
+#!/bin/bash
+#read those tasks due in the next week, and those flagged as urgent
+
+MONTH=`date %m`
+grep ! ~/.tasks
+grep $MONTH ~/.tasks

@@ -1,0 +1,28 @@
+#!/bin/bash
+DMENU="dmenu -i"
+if [[ -f "$HOME/.dmenurc" ]]; then
+  . $HOME/.dmenurc
+fi
+DMENU="$DMENU -l 10"
+
+pystr="from math import *; print"
+
+hist="$(xsel -o)"
+(echo "$pystr $hist" | python 2>/dev/null) || hist=False
+
+calc=$(echo $hist | $DMENU -p Calculate:)
+prev="$calc"
+while true; do
+  case $calc in
+    ""|"exit")
+      break
+      ;;
+    *)
+      prev="$calc"
+      hist="$prev\n$hist"
+      calc=$(echo "$pystr $calc; print \"\n$hist\"" | python 2>/dev/null\
+        | $DMENU -p "Calculate:")
+      ;;
+  esac
+done
+echo "$pystr $prev" | python 2>/dev/null | xsel -i

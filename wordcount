@@ -1,0 +1,10 @@
+#!/bin/bash
+# words.sh
+# counts words in selection and displays result in zenity window
+# dependencies xsel, wc, zenity
+# taken from johnraff in #! fora
+
+text=$(xsel)
+words=$(wc -w <<<$text)
+zenity --info --title "Word Count" --text "Words in selection:\n${words}\n\n\"${text}\""
+exit

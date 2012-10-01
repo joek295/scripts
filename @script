@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# @script makes a new file, makes it executable, then opens it in vim.
+# based on script taken from rhowaldt on the #! fora, and improved by xaos52
+
+_LOCATION="/home/joe/scripts"
+_PATH=""
+_TOUCH="touch"
+_CHMOD="chmod"
+_EDITOR="vim"
+
+if [ $# -lt 1 ]; then
+    echo "Use '@script <scriptname> [<location>]'."
+    exit
+fi
+if [ $2 ]; then
+    if [ ! -d "$2" ]; then
+        echo "Location does not exist."
+        exit
+    else
+        _LOCATION="$2"
+    fi
+fi
+
+_PATH="$_LOCATION/$1"
+$_TOUCH $_PATH
+$_CHMOD +x $_PATH
+$_EDITOR $_PATH
