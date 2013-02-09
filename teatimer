@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# default functionality informs user that her tea is ready after three minutes
+if [ $# -lt 1 ]; then
+  sleep 180
+fi
+
+# allow a custom time length (in seconds)
+if [ $# = 1 ]; then
+  sleep $1
+fi
+
+#if [ $# 1 ]; then
+  #if [ $1 = '-b' ]; then
+    #sleep 240
+  #else
+    #if [ $1 = '-g' ]; then
+      #sleep 150
+    #else
+      #echo "use `teatimer [-b|g]`"
+    #fi
+  #fi
+
+zenity --notification --text "Tea's up!"
