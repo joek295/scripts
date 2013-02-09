@@ -10,15 +10,5 @@ if [ $# = 1 ]; then
   sleep $1
 fi
 
-#if [ $# 1 ]; then
-  #if [ $1 = '-b' ]; then
-    #sleep 240
-  #else
-    #if [ $1 = '-g' ]; then
-      #sleep 150
-    #else
-      #echo "use `teatimer [-b|g]`"
-    #fi
-  #fi
-
-zenity --notification --text "Tea's up!"
+notify-send "Tea's up!"
+aplay ~/misc/chime.wav

@@ -1,0 +1,6 @@
+#!/bin/sh
+# a dmenu_path equivalent for dmenufm
+
+# list those files which we want, convert ' ' to '\ ' in the filenames, and sort ignoring case
+# write this list to file, overwriting anything already there
+find ~/ -type f | sed 's/ /\\ /g' | sort -f > ~/.dmenufm_cache

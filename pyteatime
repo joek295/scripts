@@ -1,0 +1,6 @@
+#! /usr/bin/env python
+
+import gtk
+timer = gtk.Window()
+# make window look how I want it: radio buttons
+show.timer()
