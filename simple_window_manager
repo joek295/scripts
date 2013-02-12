@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+import os
+import sys
+import traceback
+import Xlib.rdb, Xlib.X, Xlib.XK
+
+XTERM_COMMAND = ['/usr/bin/urxvt']
+MAX_EXCEPTIONS = 25
+

@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+# unit conversion script: useful for bakers, perhaps?
+# ToDo: add error checking: what if someone puts in non-numeric characters?
+
+import gtk
+
+calculator = gtk.Window()
+
+gramsoz = gtk.Button("Grams to Ounces")
+ozgrams = gtk.Button("Ounces to Grams")
+mlpt = gtk.Button("Millilitres to Pints")
+ptml = gtk.Button("Pints to Millilitres")
+
+vbox = gtk.VBox()
+hbox = gtk.HBox()
+hbox2 = gtk.HBox()
+text = gtk.Entry()
+
+calculator.add(vbox)
+
+hbox.pack_start(gramsoz)
+hbox.pack_start(ozgrams)
+hbox2.pack_start(mlpt)
+hbox2.pack_start(ptml)
+vbox.pack_start(text)
+vbox.pack_start(hbox)
+vbox.pack_start(hbox2)
+
+def ozgramsclicked(btn):
+  usrinput = float(text.get_text())
+  result = usrinput*28.35
+  returns = str(result)
+  text.set_text(returns)
+
+def gramsozclicked(btn):
+  usrinput = float(text.get_text())
+  result = usrinput*0.03527
+  returns = str(result)
+  text.set_text(returns)
+
+def mlptclicked(btn):
+  usrinput = float(text.get_text())
+  result = usrinput*0.00176
+  returns = str(result)
+  text.set_text(returns)
+
+def ptmlclicked(btn):
+  usrinput = float(text.get_text())
+  result = usrinput*568.3
+  returns = str(result)
+  text.set_text(returns)
+
+gramsoz.connect("clicked", gramsozclicked)
+ozgrams.connect("clicked", ozgramsclicked)
+mlpt.connect("clicked", mlptclicked)
+ptml.connect("clicked", ptmlclicked)
+
+calculator.show_all()
+gtk.main()
+
+# ml/pt
+# 

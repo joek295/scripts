@@ -1,5 +1,19 @@
 #!/bin/sh
 # A fuzzy file-finder and opener based on dmenu
 # Requires: dmenu, exo-open
-find ~/ | sed 's/ /\\ /g' | sort -f | dmenu -i -l 20 -nb '#000000' -nf '#9999CC' | xargs exo-open
 
+_PATH="/home/joe"
+
+if [ $# -lt 1 ]; then
+  cat ~/.dmenufm_cache | dmenu -i -l 20 -nb '#2e3436' -nf '#9999CC' | xargs exo-open
+fi
+
+# if there is a flag following the command dmenufm:
+if [ $1 ]; then
+  if [ ! -d "$1" ]; then
+    echo "location does not exist"
+  else
+    _PATH="$1"
+  fi
+  find $_PATH | sed 's/ /\\ /g' | dmenu -i -l 20 -nb '#2e3436' -nf '#9999CC' | xargs exo-open
+fi

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 #Program to find the factorial of n
 def factorial (n):
 	if n == 0:

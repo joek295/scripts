@@ -1,0 +1,3 @@
+Canasta ideas:
+1 - Nested lists: cards can have points values and special features listed e.g. "joker = [50, "Wild"]"
+2 - 

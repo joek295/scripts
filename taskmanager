@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #script to add tasks
 #is there a file called ~/.tasks?
 if [! -f ~/.tasks]; then

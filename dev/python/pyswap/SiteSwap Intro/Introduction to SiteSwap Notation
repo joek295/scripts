@@ -1,0 +1,104 @@
+
+SiteSwap: An Introduction
+
+1: What is SiteSwap, and why is it needed?
+    Siteswap is a very simple and concise way of describing juggling patterns. Before SiteSwap was invented
+    (it was developped seperately by three different groups of jugglers) there was no way of expressing a
+    juggling pattern in words or text. Patterns could be expressed by drawings, or by diagrams such as 'ladder
+    notation' or causation diagrams, but there was no way to tell somebody what a trick looked like without
+    showing them or calling it by a generally accepted name, such as 'Three Ball Cascade', 'Five Ball Shower',
+    &c.
+    SiteSwap works by expressing a juggling pattern as a series of numbers, thus a trick can be described as
+    '3' or '91' (Three Ball Cascade and Five Ball Shower respectively). As commas and brackets have special
+    meanings in non-vanilla siteswap, the string of numbers is unbroken, and hence each throw is represented
+    by a single digit number. In consequence, throws higher than a '9' are represented by the letters of the
+    Latin alphabet, though as there is a limit to how high one can throw and how fast one can move (generally
+    reckoned to be about an h, or the height of a seventeen ball shower) throws in the range a-h in patterns
+    are rare enough to be virtually non-existent, and those above are never used.
+    Originally SiteSwap could only express asynchronous, one- or two-handed, juggling patterns. This system is
+    now generally known as 'Vanilla' SiteSwap, and various modifications have been made to it, of which the 
+    synchronous and multiplex notations are now in common use. (Passing notation has also been developped, but
+    is less common).
+    
+    SiteSwap however, like all other juggling notations, cannot do everything. Its main drawback is its lack
+    of handling of what have been called 'distortions' of pure SiteSwap patterns. In this way, written in 
+    SiteSwap notation, Mills' Mess (3) is the same as the Three Ball Cascade, and Burke's Barrage as pure 423
+    (Sometimes called Fake Mess). There is an entire different system of notation to describe the hand
+    movements of these pattern distortions, called Mills' Mess State Transition Diagrams - which are beyond
+    scope of this document.*
+    We shall here confine ourselves to Vanilla SiteSwap and its generally accepted more exotic forms: 
+    multiplex and synchronous SiteSwap, with a brief treatment of passing implementations.
+    
+    *It should be noted, however, that MMSTDs only describe _some_ hand movements: Under-the-Hand and 
+    Over-the-Top throws are accounted for, but Orbits, Claws, and trick throws such as Behind-the-Back are
+    not.
+    
+2: Vanilla SiteSwap - An In-Depth Look
+    Vanilla SiteSwap is the simplest form of siteswap notation, using simply the numbers from 0-h (base 18).
+    Each number represents how high a ball is thrown. In this way, a 3 is the height of the throw for a Three
+    Ball Cascade, a 4 for a four ball fountain and so on right up to h for a (theoretical) seventeen ball
+    cascade. In this system, even numbers are 'self' throws; odds, crossing throws.
+    The three integers 0, 1, and 2 have a special meaning in this system. You might think that a 2 would be
+    half the height of a four, (or, if a physicist, a quarter: due to the inverse-square law, an increase of
+    one in SiteSwap throw-height is approximately a doubling of Real-World throw height), but this is not the
+    case. My approximate throw height when juggling Three Ball Cascade is 0.2m, and my time between throws 
+    ~0.5s. In order to throw a 2, therefore, I would have to throw a 0.1m throw which would be back in my hand
+    about half a second later. This is hardly a throw at all, and so by convention a two is a 'hold': i.e. the
+    active ball remains in your hand ready to be thrown next time that hand is throwing. A one in SiteSwap,
+    you might also think, would be a crossing throw at one quarter the height of a three: that is, at 0.05m
+    and ready to be thrown within half a second: taking 0.3 seconds perhaps to reach its destination. In
+    practice, then, a 1 tends to be a pass from one hand to the other, rather than a throw. A 0, the third
+    special throw, is an empty hand.
+    Using this system, many patterns can be written out: 3, 51, 4, and 40 are just some examples.* SiteSwap
+    can also be used to discover new possible juggling patterns, as simple algorithms can be used to calculate
+    whether or not a SiteSwap is valid. Take the pattern 423. You will notice that the sum of the pattern's
+    throw values is 9, and the average throw value is three. If you know that 423 is a three ball pattern, you
+    might wonder if this is a coincidence. It isn't. The average of any SiteSwap throw height = the number of
+    balls used in the pattern: something which can check whether or not a pattern is valid. 41, for instance,
+    is not valid, but 42 is. (It's two in one hand while holding a ball in the other). Some patterns with an
+    integer average are also not valid as SiteSwaps, however. While 423 is a valid pattern, 432 is not. This
+    is because, if you were to juggle 432, you would throw a self-four with your right hand, followed by a
+    crossing three with your left. Your third throw would be a hold (2), and your next throw would be from
+    your (now empty) left hand. You would then have to catch the first and second balls you threw in an 
+    already-full right hand, at the same time. In order to calculate whether a potential SiteSwap is valid,
+    then, another algorithm is needed. It simply involves summing the value and position of each throw in your
+    siteswap (hence 432 becomes 4+1, 3+2, 2+3 = 5,5,5; while 423 becomes 4+1, 2+2, 3+3 = 5,4,6) If any of the
+    numbers in this sum are the same, the pattern is invalid.
+    
+    *Three Ball Cascade and Shower, Four Ball Asynchronous Fountain, and 2 in 1 Hand, respectively.
+    
+3: Beyond Vanilla SiteSwap - Multiplexes and Synchronicity
+    Vanilla siteswap is all well and good, but there is only so much that it can do. What if you want to 
+    describe a 4-Ball Sync Fountain? Fortunately, an extended form of siteswap notation was created precisely 
+    to solve this problem: Synchronous SiteSwap.
+    Synchronous siteswap is written thusly: (44). Any two throws made at the same time from different hands are 
+    written inside parentheses, first the throw from your hand which would throw next in an async pattern, then
+    the one which just threw.
+    
+    Multiplexes can also be written in this form of siteswap, in the form [35]. Putting two throws in square brackets
+    denotes throwing them from the same hand, at the same time.
+    
+    Finally, crossing throws can be denoted as 4x. Any even number is normally a 'self' throw: that is, it is caught
+    by the hand which threw it. If one wants a crossing even throw, putting an x after it is the accepted siteswap
+    notation. There is no equivalent for self-odds.
+    
+4: Passing Patterns - A Rare SiteSwap Form
+    Passing patterns can be represented in the form <XXX|YYY>, where XXX is the siteswap of the first juggler's
+    pattern, and YYY the siteswap of the second. A throw Xp denotes a passing throw, so <3p3|3p3> is a 'two-count'
+    pattern with six props. 
+    
+Appendix A: A Brief History of SiteSwap Notation
+    
+    
+Appendix B: A Glance at Other Forms of Juggling Notation
+    Mills-Mess State Diagrams
+    
+    Ladder Notation
+    
+    
+Appendix C: Common Patterns and Their SiteSwaps
+    N-Ball Cascade: N (when N is odd)
+    N-Ball Fountain: N (when N is even)
+    N-Ball Shower: M1 (Where M = 2N-1)
+    Fake Mess: 423
+    

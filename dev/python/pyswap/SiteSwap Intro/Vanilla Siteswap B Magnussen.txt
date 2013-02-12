@@ -1,0 +1,764 @@
+From @voodoo.physics.ucsb.edu:bengt@pcs1.physics.ucsb.edu Mon Jan 21 23:48:29 1991
+Received: from voodoo.physics.ucsb.edu by skinner.cs.uoregon.edu with SMTP
+	(5.61.14/IDA-1.2.8) id AA03029; Mon, 21 Jan 91 23:48:22 -0800
+Received: from pcs1.physics.ucsb.edu by voodoo.physics.ucsb.edu with DECNET ;
+          Mon, 21 Jan 91 19:17:51 PST
+Date:    Mon, 21 Jan 91 19:16:18 PST
+From: bengt@voodoo.physics.ucsb.edu (Bengt Magnusson)
+Message-Id: <910121191618.20a02399@pcs1.physics.ucsb.edu>
+Subject: Text file, explaining our notation.
+To: pdm@cs.uoregon.edu
+X-St-Vmsmail-To: ST%"pdm@cs.uoregon.edu"                                           
+Status: RO
+
+  A few explanations about the program and the notation. First, the notation. A
+trick is written as a string of numbers. Each number indicates how high and 
+where a ball should be thrown. Generally, it should be thrown as if you were
+juggling that many balls, with the requirement that odd numbers are always
+juggled in a cascade, and even numbers in a fountain. THE HANDSPEED ALWAYS STAYS
+THE SAME! Thus, if you are juggling five balls, making about five throws per
+second, you always continue to throw five times per second, no matter how high
+or low any individual ball is being thrown. The throw heights have to be related
+by our formula
+		Hn = Hm * ( (n-1)/(m-1) )^2,
+where n and m are the number of balls, and Hn and Hm the throw heights needed.
+(We have for simplicity assumed theta=0.5 .)
+
+  The two hands are always supposed to be staggered, as in a normal cascade
+pattern. As an example, suppose you are juggling five balls, making each throw
+about 1 m high. Then a "6" is a 1.6 m high throw to the SAME hand. A "7" is a
+2.25 m high throw over to the OTHER hand. An "8" is a 3 m high throw to the
+SAME hand, while a "9" is a 4 m high throw to the OTHER hand. A "4" is a 0.6 m
+high throw to the SAME hand, and a "3" is a 0.25 m high throw to the OTHER hand.
+
+  "0" - "2"s deserve special mention. In principle, you could make a "2" be a
+0.06 m high throw to the same hand, but it's usually done by just holding on to
+the ball for one beat. A "1" is a quick hand-off to the other hand, like the
+short throw in a shower. A "0" simply means the hand is empty for that moment.
+This still satisfies the notion of throwing a ball as if you were juggling that
+number: 2 could be "juggled" by just holding the balls, one in each hand. 1 is
+"juggled" by just constantly passing it back and forth between the hands. 0 is
+"juggled" by not doing anything at all with two empty hands.
+
+  As an example, let's give a detailed description of the five ball trick 7562.
+I let the clock tick from 0 to 2 s, at each instant telling you how each hand is
+throwing.
+
+Time    s     Left hand                 Right hand              .
+  |                                                             .
+  |                                                             .
+  |    0.0    1 m across                                       "5"
+  v
+       0.2                              1 m across             "5"
+
+       0.4    1 m across                                       "5"
+
+       0.6                              2.2 m across           "7" start trick
+
+       0.8    1 m across                                       "5"
+
+       1.0                              1.6 m same             "6"
+
+       1.2    hold                                             "2" end trick
+
+       1.6                              1 m across             "5"
+
+       1.8    1 m across                                       "5"
+
+       2.0                              1 m across             "5"
+                                                                .
+                                                                .
+                                                                .
+
+If you were actually attempting this trick, you wouldn't be thinking "2.2 m
+across," etc. Most of you have a pretty good idea of how high a seven ball
+pattern would have to be, so you'd probably think of the trick as "high across,
+normal, not-so-high same, hold," or something like that.
+
+  To further help clarify the notation, I'll give the notation for some tricks
+that most of you already know. The first example is the shower. A three ball
+shower is called "51," a four ball shower "71," a five ball shower "91," etc.
+The "5" is the high throw, while the "1" is the quick throw underneath. Imagine
+the numbers repeated endlessly: "...5151515151..." I will always only write out
+the shortest string possible, that can then be repeated forever.
+
+  A four ball half shower thrown with right (R) and left (L) hands alternating
+as in ...R  L  R  L  R  L... (as opposed to ...RL  RL  RL...) is called "53."
+(Note that no five ball (or any odd number) half shower is written as "64;" the
+balls never switch hands for this pattern. "64" is three balls done in one hand
+and two in the other. As an exercise, visualize the difference between "64" and
+"6662" and "666660". Both involve three in one hand and two in the other.)
+
+  Three balls in one hand (with the other hand empty) is "60." Two in one hand,
+with a third held in the other hand, is "42." Two in one hand, with the third
+thrown every other time, is "4440." "Five with a hole," i.e., four balls all
+thrown in the five ball pattern, is "55550." Many people practice this when they
+try to learn five balls. Other five ball practice patterns used with four balls
+are "552," and, less commonly, "5551." 
+
+  A fairly common four ball pattern is where one ball is thrown high, and the
+other three are briefly cascaded like three balls. There are two ways of doing
+this, the more common one being "633." This one is also popular for bouncing,
+the "6" being bounced on the floor instead of thrown high. (The other way of
+doing the pattern is "7333." Of course you can also do "83333," etc., but this
+is getting silly.)
+
+  As you can see, you already know many of our tricks, which we call "site-
+swaps." There are literally thousands of these tricks. Once you start learning
+the basic throws of a trick, you can then figure out ways to modify them to 
+your own taste and skill. As I mentioned above, you can bounce some of the
+throws. You can perhaps do Mill's mess with some of these patterns. One nice
+application of "2"s occurring in patterns is to do something with the hand that's
+just holding a ball. You can scratch your nose, wipe your forehead, pretend to
+look at your watch, swat a bug (or your partner), etc. Limitless opportunities!
+(Of course you can do the same whenever "0"s occur, too, but tricks with "0"s
+always involve higher (=harder) throws than do similar tricks with "2"s.)
+
+  The tricks can of course be done with clubs or rings also. Here, "3"s may be
+of interest. Any single throw three club trick can be done then. For example,
+with five clubs, throw a "663." When you do the "3," don't just throw it across.
+Do a chin roll, a head roll, a helicopter roll, a Nizer, an under the leg, a
+back cross, an ego, or an oge! Perhaps more humanly, do this during a "53" or
+"633" with four clubs. "6"s with clubs are typically triples, while "5"s are
+more lofted doubles.
+
+
+  Now for the program. It's in badly written fortran (it has goto's in it!), but
+it's fairly well commented, and it works. On a VAX it takes about 15 CPU-minutes
+to generate all tricks up to word length seven. (There are many thousand of
+them.) The program will ask you for the number of balls you intend the tricks to
+be. It will also ask you for maximum word length, and for the highest throw you
+allow. (Throwing 15's isn't easy; typically, 9's are the most people can deal
+with.) I suggest you don't try to generate tricks of word length longer than 9.
+The program will generate all true site-swaps, as well as all excited ones. A
+true site-swap is one you can just do from a regular pattern, while an excited
+one needs a special start-up sequence. For example, you can't just start doing
+a shower from a three ball cascade; you need to prepare for the shower by 
+throwing a "4" first. Similarly, you can't just stop the shower either. You have
+to do a "2" before resuming the cascade. Therefore, the "51" is said to be an
+excited site-swap. The "64" with five balls, on the other hand, is a true site-
+swap. The program will also generate a start-up and a finish sequence for the
+excited tricks. (I say A sequence; there are many possible ones. My program
+tries to form the one with the lowest throws. Another selection criterion could
+be to select the one creating the lowest number of throws, or the one with the
+most 0s or 2s or whatever. For example, some finish sequences will be 111, which
+is dumb. 200 would be better. You can usually figure those out on your own, or
+modify the program.)
+
+  Rather than working with  the actual numbers in the trick sequences, the
+program works with the numbers minus the number of balls. Thus, instead of
+thinking about the 7562, it ponders 201-3. The reason is that these lower
+numbers are more general; add 6 to them, and you get a valid 6 ball trick
+(8673); add 3 and you get a 3 ball trick (5340), etc. It starts by generating
+(for a trick length of four throws) 1 -5 -5 (for five balls; you can't throw
+less than a 0). It then tries to fill in the last digit so the string sums to
+zero. This requires a 10 in the last position, or 6 0 0 15. If you allow 15's,
+it will consider this a legal trick candidate, and perform further tests. (It
+has to check for collisions.) If you don't, it will increment the second to 
+last digit (now 1 -5 -4), and try again, until a legal trick is found. After a 
+legal trick is found, it will again increase the penultimate digit, until it 
+reaches the maximum throw height you allow. It will then increase the digit 
+before that, reset the penultimate one to -n, and start over. It keeps doing 
+this until the first digit reaches the maximum throw height.
+
+  All the time, the program tries to make the string sum to zero. This is the
+fundamental criterion for a legal trick. No strings that do not sum to zero are
+legal tricks. However, it is not a sufficient criterion. Many zero-sum strings
+are not legal tricks, either. However, as a consequence of the zero-sum rule,
+the average of the numbers in a string like 7562 is the number of balls the 
+trick involves. You can therefore tell at a glance how many balls a given trick
+involves, even if you've never tried to perform it (or seen it) before. The
+second test is for collisions. If any two throws ever aim to the same future
+site, a collision will occur, and the trick candidate is rejected.
+
+  The program avoids repetitions. Thus, you will find "64" in the table, but you
+won't find "6464." Also, "744" is in the table, but "64744" or "74464" aren't.
+You can just string together tricks in any way you want. Moreover, the table is
+generated so that the highest throw is always the first one. This means that
+some tricks you'd expect to find aren't in the table directly. For example,
+"771" is an excited trick, with start up sequence "66" and finish "3." This is
+tabulated under word length three as 66 771 3, and it means you can do
+...55566771771771...7717713555... You may notice that 667713 is then also a
+valid trick, that could be repeated: ...555667713667713...667713555..., and 
+therefore expect to find 667713 in the table for word length six. You won't. You
+will, however, find 771366, which is the same trick shifted over two throws. If
+you do ...667713667713... over and over again, you can't tell whether it's
+667713 or 771366. The only difference is in the start-up and finish sequences.
+667713 won't need any, while 771366 will, but that's only a minor issue that you
+can adjust as you learn the tricks. I'm  just avoiding duplications; there are
+enough tricks as there are. 
+
+  Some suggestions for worthwhile tricks to start out with: Three balls 441,
+51414. Four balls 661515. Five balls 7562, 75751, 771, 97531 (the first ball you
+throw is the last you catch, the last you throw is the first you catch), 95551.
+
+  You can do a lot of sifting while running the program. For example, sequences
+like "11" are pretty dumb. Tricks with "0"s always have similar tricks with "2"s
+instead, and the latter will always be easier as they involve lower throws. "3"s
+are really hard to throw in most patterns; they must be higher than "1"s, but
+much lower than any other throws, so you end up doing most "3"s blind. Just get
+rid of those tricks during execution of the programs, and the table will be 
+somewhat shorter and easier to read. The sample program I'm sending has such a
+rejection scheme (in the commented loop to address 122). Just delete that part
+if you want, or add your own.
+
+  So why do we call the tricks site-swaps? The name comes from the way we first
+thought about the tricks. Suppose you are juggling imaginary numbered boxes,
+each one containing a ball. The boxes are always moving in the same basic
+pattern (cascade or fountain). Now suppose you can throw the balls in such a
+way that they switch boxes, f.ex. let the balls in box numbers 2 and 4 switch
+places. Then you have performed a site-swap: the balls have had their imaginary
+boxes, or sites, swapped. 
+
+  This obviously ties together strongly with the permutations of numbers. If you
+juggle five balls, you have five boxes, and so there should be 5! = 120 site-
+swaps. There are, and in a sense the set of all site-swaps of length n can be
+made isomorphic to Sym(n). However, many of these site-swaps would be dumb. 
+64555, 56455, 55645, and 55564 would all permute the imaginary boxes differently
+while looking absolutely identical. The generated tables will therefore have
+fewer elements than n!. To this must then be added the excited tricks, so the
+result is that there is no simple formula predicting the number of tricks at a
+given word length. Our best guess is that is goes roughly like n!; maybe someone
+can derive an exact formula. The simple interpretation of imaginary boxes 
+becomes less obvious when you have five balls and do a six (or seven or...) 
+throw trick. (Number of throws = word length.) However, the name had already
+stuck in our minds, and we kept it. The excited tricks were discovered even 
+later, but clearly belong to the same general category of tricks, so we call 
+them site-swaps too.
+
+					Bengt Magnusson and Bruce Tiemann
+					448 Pitzer Court
+					Goleta, CA 93117
+					(805)685-3360
+
+
+
+					Bengt@Voodoo.Ucsb.Edu
+					Bengt@Voodoo.Bitnet
+					Voodoo::Bengt
+					Available node numbers: 44.124, 44.125,
+					44.126, 44.128, 44.129, 44.130, 44.133
+					(i.e., 44124::Bengt, etc.)
+
+From JUGGLING@INDYCMS.BITNET Sat Jan 26 19:45:21 1991
+Received: from oregon.uoregon.edu by skinner.cs.uoregon.edu with SMTP
+	(5.61.14/IDA-1.2.8) id AA05050; Sat, 26 Jan 91 19:45:16 -0800
+Received: from INDYCMS.IUPUI.EDU by oregon.uoregon.edu; Sat, 26 Jan 91 19:44 PST
+Received: by INDYCMS (Mailer R2.07) id 8290; Sat, 26 Jan 91 22:39:42 EST
+Date: Sat, 26 Jan 91 19:35:57 PST
+From: Bengt Magnusson <bengt@VOODOO.BITNET>
+Subject: Explanation of new site swap program
+Sender: "Juggling - For Jugglers of all abilities." <JUGGLING@INDYCMS.BITNET>
+To: "Peter D. Mark" <pdm@CS.UOREGON.EDU>
+Reply-To: "Juggling - For Jugglers of all abilities." <JUGGLING@INDYCMS.BITNET>
+Message-Id: <CB315BDF291F200B1C@oregon.uoregon.edu>
+X-Envelope-To: pdm@CS.UOREGON.EDU
+Comments: Warning -- original Sender: tag was
+Status: RO
+
+  I have finally created a better version of the site swap program. It is
+written in a real language (ANSI C), and it uses a more efficient and
+elegant algorithm. Moreover, there are no goto's in the code! Note, however,
+that this program only generates ground state site swaps. Another program
+dealing with the excited state tricks will follow later (maybe much later).
+The following description will assume you know something about site swaps
+already.
+  A site swap is a string of numbers that tell you how high each throw must
+be. If the trick contains n numbers, you are to imagine you are juggling n
+imaginary sites. They happen to be inhabited by the real objects you are
+juggling, but there may be more or fewer of them than you have objects!
+After the trick, the sites land in some permutation of their initial order.
+If you subtract off m, the number of real objects you have, from the string
+of numbers, you get a string whose sum is zero. F.ex., the 7562 is a five
+object trick. Subtract off five, and you have 2 0 1 -3; 2+0+1-3=0. If you
+count forward two positions from the '2' (which is in pos. 1), you end up by
+the '1' (which is in pos. 3); if you count forward zero positions from the
+'0' (in pos. 2), you stay there; if you count one position forward from the
+'1' in pos. 3, you end up by the '-3' in pos. 4; finally, if you count
+minus three positions forward, i.e., three positions backwards, from the '-3'
+you end up by the 2 in pos. 1 .
+  Notice how in all of this, we always ended up on a position inside the
+trick itself. Nothing ever pointed outside the string of numbers we have.
+This is what is meant by a ground state trick. To illustrate what an excited
+state looks like, consider the 771, again with five objects. It's a 2 2 -4
+with five subtracted off. Notice how, if you count four positions backwards
+from the -4 you end up two positions before the first position. This is a
+common feature of all excited state tricks. This new program only generates
+the ground state tricks! Another, more practical difference between ground
+and excited states, is that you can throw a ground state trick directly from
+a regular (no trick) pattern. You can also stop it after a single cycle (or
+however many cycles you want) and resume the normal juggling. (This also
+means that you can string any number of different ground state tricks
+together, side by side.) You can not do this with an excited trick. They all
+require a particular sequence of throws to get started from the regular
+pattern. Once started, the excited trick can be repeated however many times
+you want. When you want to stop, you again need to do a particular set of
+throws to be able to get into the regular pattern. You are also not free to
+combine excited tricks any way you want; that typically require their own
+coupling sequences.
+  So if my old program generated all tricks, why write a new program that
+generates fewer tricks? The reason is that the old program was badly written,
+it was slow, and it had bugs in it. It did not generate all the tricks it
+was supposed to, and it kept on generating tricks that shouldn't be there
+(as you may have noticed from my repeated postings of patched up versions).
+In particular, the old program demanded the first throw be the highest one.
+The reason for that was that once you are running the trick indefinitely,
+you can cyclically  the starting point to any throw you want. However,
+if you only want to do the trick a single time, you can't do that, and the
+program therefore missed many tricks.
+  I have also used more intelligent choices for candidate throw heights,
+thereby reducing the execution time. Instead of generating all strings of
+zero-sum tricks, I use the restrictions imposed by the ground state. Since
+no throws are allowed to refer to positions outside the trick itself, I can
+place very strict limits on the range for throw heights. F.ex., the first
+throw can be at most n-1 high, or it will point beyond the last throw. It
+must also be greater than 1. (A 0 = a normal throw, so the trick is really
+a site swap one unit shorter (word length n-1 instead of n), and you can't
+start a trick with a smaller than normal throw: you have to start by buying
+time.) A throw in the last position must be negative (again, a zero means
+the trick is one unit shorter, while a positive number points beyond the end
+of the trick), but not smaller than -n+1, or it points before the first
+throw. Throws in position i, 1<i<n, must be smaller than n-i, but greater
+than 1-i. Of course all throws must also be greater than -number of real
+objects juggled.
+  The algorithm starts by calling a routine that generates the possible
+throw heights for pos. 1. It then calls itself to generate the throws for
+pos. 2, etc. The routine keeps calling itself to generate the throw height
+for pos. i, assuming pos. 1 to i-1 have already been assigned heights. It
+also keeps track of running sums from pos. 1 to i: if it ever reaches zero
+before the last position, we are just juxtaposing two shorter site swaps,
+and since we already know they can be juxtaposed any way we want, it will be
+unnecessary to tabulate those tricks over again. The program also checks for
+impossible conditions: if pos. 1 to i have been assigned heights that are too
+big so we can never generate a zero sum trick, no matter how small the
+remaining throws are made, it backtracks, rather than trying all the possible
+attempts at the (doomed to fail) zero sum. The variables summax and summin in
+the code check this condition. The sum from i+1 to n of the lowest possible
+throws is -0.5*n*(n-1) + 0.5*i*(i-1), while the sum of the highest possible
+throws is -1 + 0.5*n*(n-1) + 0.5*i*(i+1-2n). Add the running sum to this,
+and you get the highest and lowest possible sums. Then must bracket zero if
+a zero sum trick is to be possible. If they don't, the algorithm again
+backtracks one position, and tries new throws.
+  Collisions are checked for as we go along, rather than in the finished
+trick. In this way, we can stop right away when two throws are in conflict,
+rather than trying to generate all other tricks with those two throws first,
+and then throwing them out. A throw of height j in pos. i will collide (land
+in the same hand at the same time) with a throw of height m in pos. k if
+m-j = k-i.
+  Before a trick is output, you can eliminate unwanted ones in the last
+routine, called 'nuke'. Say you don't want to tabulate any tricks containing
+'3's. Just make nuke return 1 whenever a trick contains a 3. (Since the
+tricks are generated with the  number of objects subtracted off, you have to
+make the test for 3 - # of objects, rather than just 3.) See the comments in
+the program for more information. I'm sure the algorithm can be improved
+upon further, and I invite you to do so. However, I hope the improvement of
+this algorithm compared to the old one will be apparent.
+                                        Bengt@Voodoo.Ucsb.Edu
+
+From bengt%pcs0.physics.ucsb.edu@nobbs.physics.ucsb.edu Mon Jan 28 13:41:42 1991
+Received: from nobbs.physics.ucsb.edu by skinner.cs.uoregon.edu with SMTP
+	(5.61.14/IDA-1.2.8) id AA06355; Mon, 28 Jan 91 13:41:38 -0800
+Received: from pcs0.physics.ucsb.edu by nobbs.physics.ucsb.edu with DECNET ;
+          Mon, 28 Jan 91 13:40:04 PST
+Date:    Mon, 28 Jan 91 13:38:42 PST
+From: bengt@pcs0.physics.ucsb.edu (Bengt Magnusson)
+Message-Id: <910128133842.20601c85@pcs0.physics.ucsb.edu>
+Subject: RE: more about siteswaps
+To: pdm@cs.uoregon.edu
+X-St-Vmsmail-To: ST%"pdm@cs.uoregon.edu@spencer.cs.uoregon.edu"
+Status: RO
+
+  I knew it, I screwed up the address. I just made someone else confused. You
+see, after I replied to you about the exc./gnd., I realized one thing, and 
+added that in a note I sent to what I remembered as your address. Well, it
+wasn't. This is the comment that was meant for you: I said that the 4514142
+will appear in the three ball, seven word length ground state site swap
+table. Well, it won't, and this is why. 45141 is a ground state site swap of
+word length five, and 42 is another ground state site swap (of word length
+length two). 4514142 is then just the juxtaposition of two ground state site
+swaps, and will therefore not appear in the table, since we know that we can
+string any site swaps together back to back in any way we want. Therefore, we
+have yet another reason to tabulate the excited state tricks separately.
+						Bengt@Voodoo.Ucsb.Edu
+
+From @voodoo.physics.ucsb.edu:bengt@pcs1.physics.ucsb.edu Mon Jan 28 10:56:06 1991
+Received: from voodoo.physics.ucsb.edu by skinner.cs.uoregon.edu with SMTP
+	(5.61.14/IDA-1.2.8) id AA03592; Mon, 28 Jan 91 10:55:55 -0800
+Received: from pcs1.physics.ucsb.edu by voodoo.physics.ucsb.edu with DECNET ;
+          Mon, 28 Jan 91 10:54:43 PST
+Date:    Mon, 28 Jan 91 10:52:55 PST
+From: bengt@voodoo.physics.ucsb.edu (Bengt Magnusson)
+Message-Id: <910128105255.20a03b86@pcs1.physics.ucsb.edu>
+Subject: RE: more about siteswaps
+To: pdm@cs.uoregon.edu
+X-St-Vmsmail-To: ST%"pdm@cs.uoregon.edu@spencer.cs.uoregon.edu"
+Status: RO
+
+  First, please notice the trivial bug the posted version had: replace 'infp'
+(in routine 'trick') by 'outfp'.
+  About graphics: read my new posting.
+  Ground state vs. excited: Bruce and I are writing articles for JW that will
+hopefully explain all this. However, since the excited state article will not
+appear for at least two issues, you might want to know right away. Basically,
+a ground state trick is one you can throw right away out of a normal pattern,
+and return to the normal pattern as soon as you've finished the trick. Take
+the 441 (3 balls). You can merrily juggle along in your 3 ball cascade, and at
+any time decide to do a 441, and then return to the cascade: ...3333441333...
+Excited state tricks don't work that way. Take the 51414 (3 balls). If you try
+to do that straight out of the cascade, you run into trouble: ...33351 is as
+far as you'll get. The last 3 you threw will collide with the 1 (land in the
+same hand at the same time). You have to throw a special start up sequence to
+create a configuration that allows you to begin the trick. In this case it's
+simple: it's a single throw, a 4. Therefore, if you throw ...3333 4 you can 
+then start the 51414: ...3333 4 51414 . You can now run the 51414 as many
+times as you like: ...333 4 51414 51414 ... 51414 (the spaces are for clarifi-
+cation only, they don't mean you have any spaces in the juggling). Now, if you
+want to return to the cascade, you run into problems again. You have to throw a
+special finishing sequence as well. In this case, it's a 2: ...51414 2 333...,
+so the full excited trick looks like ...333 4 51414 51414 ... 51414 2 333...
+  The tricks are called excited because they require these special coupling
+sequences, and live their own life only within these couplants. You may 
+realize that the sequence 4514142 can be done directly out of a cascade (this
+is the excited trick plus the coupling sequences); therefore it should be a
+ground state site swap. Indeed, the 4514142 is found in the seven word length
+ground state table. One might therefore ask why we should bother tabulating
+excited state tricks separately, as they are always included in the ground
+state tables, although at a higher word length. The reason is that from looking
+at the 4514142 in the table, it is not at all clear that the 51414 piece can
+be repeated indefinitely within the trick. Repeating the inner trick often
+yields neat tricks on their own, and therefore merit their own table. (Notice
+that not all site swaps hide these 'inside' tricks, only some do. However,
+enough of them do that there are, at a given word length (not counting
+connecting sequences), more excited state tricks than there are ground state
+tricks.)
+  Yes, a future program will do the excited state tricks, as well as their
+coupling sequences.
+					Bengt@Voodoo.Ucsb.Edu
+
+From JUGGLING@INDYCMS.BITNET Sun Jan  6 20:41:33 1991
+Received: from oregon.uoregon.edu by skinner.cs.uoregon.edu with SMTP
+	(5.61.14/IDA-1.2.8) id AA22070; Sun, 6 Jan 91 20:41:31 -0800
+Received: from INDYCMS.IUPUI.EDU by oregon.uoregon.edu; Sun, 6 Jan 91 20:40 PST
+Received: by INDYCMS (Mailer R2.07) id 2007; Sun, 06 Jan 91 23:37:26 EST
+Date: Sat, 5 Jan 91 15:16:26 PST
+From: Bengt Magnusson <bengt@ucsb.ucsb.edu>
+Subject: Site-swap Program
+Sender: "Juggling - For Jugglers of all abilities." <JUGGLING@INDYCMS.BITNET>
+To: "Peter D. Mark" <pdm@CS.UOREGON.EDU>
+Reply-To: "Juggling - For Jugglers of all abilities." <JUGGLING@INDYCMS.BITNET>
+Message-Id: <DAE0E37D955F6012CD@oregon.uoregon.edu>
+X-Envelope-To: pdm@CS.UOREGON.EDU
+Comments: Warning -- original Sender: tag was
+Status: RO
+
+  The version of the program I posted has an unnecessary limitation in it.
+Fairly early on there is a line like "If ( Sum .Eq. 0 ) Goto 300". What is
+does is remove needless duplication of tricks. F.ex., 6464 is not really
+different from 64, and it's therefore unnecessary to clutter up the four
+word length list with this duplicate. That program line does just that.
+However, it also removes some useful tricks, like the 51414. If you just
+comment out that line, you will get all the tricks printed out, but there will
+be a lot of duplicates. A better way of doing it is to not just check for
+Sum=0, but to also check if the first part of the trick (the zero-sum part
+that made sum=0) is a genuine site-swap. If it is, then the trick will indeed
+be a useless duplicate, but if it isn't, the trick will probably be useful.
+This would mean tricks like 6464, 64744, 7575195551, etc., would all be
+removed from the table (being just two regular site-swaps in succession),
+while tricks like 51414 will be retained. The 51 (three shower) is an
+excited site swap, requiring a start-up sequence (a 4) and a finish sequence
+(a 2). If it is immediately followed by another trick, something new and
+interesting is likely to result. The 51414 is really just a three shower (51)
+and a 441 in succession, but the 441 has been cyclically shifted to a 414,
+and there is no finish throw after the 51, so the juxtaposition of those two
+site-swaps is sufficiently different to merit its own spot in the table.
+  I'll post an ugly version of the program that does just this. Later on in
+the program is a piece that checks for genuine site-swaps, and I've just
+duplicated that part, and do it separately for Sum=0 situations. Of course
+that piece should really be in a subroutine. If fortran only lent itself to
+useful subroutining... Anyway, try this new version, and you'll get more
+site-swaps to practice (as if there werent' enough already!).
+                                                                Bengt
+
+From JUGGLING@INDYCMS.BITNET Fri Feb  8 17:03:51 1991
+Received: from oregon.uoregon.edu by skinner.cs.uoregon.edu with SMTP
+	(5.61.14/IDA-1.2.8) id AA03544; Fri, 8 Feb 91 17:03:48 -0800
+Received: from INDYCMS.IUPUI.EDU by oregon.uoregon.edu; Fri, 8 Feb 91 17:02 PST
+Received: by INDYCMS (Mailer R2.07) id 5924; Fri, 08 Feb 91 19:34:50 EST
+Date: Fri, 8 Feb 91 16:29:23 PST
+From: Bengt Magnusson <bengt@VOODOO.BITNET>
+Subject: Excited State Site Swaps, Part II
+Sender: "Juggling - For Jugglers of all abilities." <JUGGLING@INDYCMS.BITNET>
+To: "Peter D. Mark" <pdm@CS.UOREGON.EDU>
+Reply-To: "Juggling - For Jugglers of all abilities." <JUGGLING@INDYCMS.BITNET>
+Message-Id: <C110D0A7AEFFE05897@oregon.uoregon.edu>
+X-Envelope-To: pdm@CS.UOREGON.EDU
+Comments: Warning -- original Sender: tag was
+Status: RO
+
+  Here is the promised program for generating excited state site swap
+tricks. Well, the program is actually in a different file. This file
+will attempt to explain what the program does, as well as describe a
+few general facts about excited state tricks.
+  First, let's recall what is meant by an excited state trick, as
+opposed to ground state tricks. All site swaps are described by a
+string of numbers, where each number tells you how high to throw the
+object. The average of the numbers in the string equals the number
+of objects juggled. If you subtract off the number of objects from
+each number in the string, you end up with a string of numbers whose
+sum is zero. Each number in the string now tells you how many sites
+each object is advanced or delayed. F.ex., the 4 4 1 trick with three
+becomes 1 1 -2 after this operation. It tells us the first throw is
+delayed one position, as is the second one, while the third one is
+advanced two positions.
+  In a ground state trick, no throw is ever advanced or delayed beyond
+the string of the trick. In the above example, the first 1 is delayed
+one position, to the second position. The second 1 is also delayed one
+position, from the second to the third position. The -2 is advanced two
+positions, from pos. 3 to pos. 1. No throw ever points outside the
+trick. If you draw little arrows from one number to the position it
+points to, you'll end up with a closed loop. There are no open ends
+pointing away from the trick.
+  Consider now a simple excited state trick, the three object shower.
+It's called a 5 1 in our notation, or 2 -2 after the subtraction. Here,
+the 2 points from pos. 1 to pos. 3, but there is no position three: the
+trick is only two throws long. Similarly, the -2 points from pos. 2 to
+pos. 0, which again doesn't exist. This is a common mark of all excited
+tricks. They all point to positions beyond the trick. Sure, if you
+repeat the trick: 2 -2 2 -2 2 -2..., you'll always end up on an existing
+position, but remember, a trick is always written in its shortest form,
+which is 2 -2 in this case.
+  Another way of stating the difference between a ground state and an
+excited state trick is that you can always do a ground state trick
+directly from the normal cascade or fountain pattern, and you can string
+any number of ground state tricks together back to back. You can not do
+that with excited state tricks. In order to get it going, you will have
+to do some funny throws to couple the cascade (or fountain) to the
+excited trick. Once in the excited trick, you can run it as long as you
+like, but when you want to stop, you again have to throw a coupling
+sequence to return to the normal pattern. Consider the three object
+shower. If you're juggling along in a cascade, and decide you want to
+start showering all of a sudden, you have to adjust a few throws before
+you get into the shower. Many people do this by abruptly changing their
+juggling speed, but you don't have to do this. In fact, when you're
+throwing site swaps, the notation always assumes that your hand speed
+remains EXACTLY THE SAME. In the case of the shower, you can throw a '4'
+to get started, and a '2' to finish: ...3333 4 5151...5151 2 3333...
+  Excited state tricks can also in general not be juxtaposed the way
+ground state tricks can. Any random pair of excited tricks is likely to
+require a set of special connection throws. The only exception is for
+tricks with the same start up sequence.
+  We have to be a bit careful about what we call an excited trick. Let's
+look at the 4 4 1 again (ground state). Suppose we rewrite it 4 1 4; this
+is just a cyclic permutation of the same trick, and when you run it,
+there's no way to telling them apart: 441441441... or 414414414.. look
+the same, you just  your starting position one throw. However, the
+4 1 4 becomes 1 -2 1 after subtraction, and here the -2 points from pos. 2
+to pos. 0, and the second 1 points from pos. 3 to pos. 4. How can a
+ground state trick point outside the string? Well, you can either say that
+it doesn't: 414 is excited, not ground state (unlike 441), but this is
+unsatisfactory. The best solution is to say that a trick is ground state
+as long as there is at least one cyclic permutation of the trick that is
+ground state. A trick is then, equivalently, said to be excited only if
+there is NO cyclic permutation of the trick which is ground state.
+  Consider again 5 1 --> 2 -2. The only cyclic permutation of this trick
+is -2 2, which is also excited. There is therefore no cyclic permutation
+of the three object shower which is ground state, so it is a genuinely
+excited trick. 5 1 4 1 4 was long our favorite example of a three object
+excited trick. Written as zero-sum, it's 2 -2 1 -2 1, and the first -2 and
+the trailing 1 both point outside the trick. However, we recently
+discovered that the cyclic  1 2 -2 1 -2 is no longer excited! Older
+computer codes had overlooked this possibility. The currently posted
+version takes this into account.
+  Another issue in tabulating excited state tricks is that of repetition.
+For the ground state tricks, it's obvious: since any two ground state
+tricks fit together back to back, there is no reason to include pairs
+(or triples or...) of tricks in the table. However, for excited state
+tricks that is not as clear, since they do in general not fit together
+randomly. Typically, tricks with the same start up sequence do fit
+together. I decided to let possible combinations stay in the table,
+except for repetitions of the same trick. Therefore, 5 1 5 1 will not
+appear in the table, while 6 0 3 5 0 4 will. The first one just repeats
+the same trick twice, while the second one shows you that the 6 0 3
+trick can in fact be followed by the 5 0 4 trick, both of which are
+legal excited state tricks on their own.
+  Ground state tricks are never allowed to begin or end on a throw of
+normal height, as such a trick is the same as a trick of shorter
+length. I relax this restriction for excited state tricks, as they
+normally require a finish sequence to return to the normal pattern. If
+it would so happen that the trick can be ended on a single normal
+throw, that is something I consider non-obvious, and I also tabulate
+those. F.ex., three in one hand is 6 0. You can follow that with a
+single normal throw: 6 0 3 is a legal trick. Note, however, that 6 0 3 3
+is not legal! There seems to be significant merit in allowing 6 0 3
+to appear in the table.
+  Once a perfectly legal and genuinely excited trick has been found,
+it has to undergo some more processing. First, we don't want both 5 1
+and 1 5 to appear in the table. The program therefore generates the
+tricks under the condition that the first throw is the highest one.
+This works fine for tricks with just one throw of that height. But
+consider the five ball trick 777171. It has no less than four 7's.
+Clearly, the program must prevent all four possible orderings of this
+(777171, 771717, 717177, and 717771) from appearing. It does that by
+keeping only the cyclic  that collects all the highest throws at
+the beginning. 777171 gathers the most number of high throws at the
+beginning, and is the one listed.
+  The algorithm basically loops through all values that throws could
+possibly have in any position. You get to specify a highest throw, as
+excited state tricks rapidly accommodate ridiculously high throws.
+Already at word length four, three ball tricks can contain "12"s, while
+six ball tricks can contain "24"s! Clearly you don't want to waste the
+computer's time (or disk space) with all these utterly useless tricks.
+Generally, if you have n objects, and word length m, all but one of the
+throws can be a -n (in zero-sum notation); to compensate, the remaining
+throw must then be n(m-1). The program loops from 1 to n(m-1) for the
+first position (as it has to be the highest throw). Once that has been
+assigned, the algorithm calls itself, and loops from -n to pos[1] for
+the throws in the next position, where pos[1] is the throw height in the
+first position.
+  This recursion proceeds until the second to last position is filled.
+At that point, the last throw height is fixed by the zero sum condition.
+The program checks along the way to make sure impossible conditions
+aren't created along the way (such as collisions from throw heights
+already assigned, to non-zero sums).
+  There is then the issue of start up and finish sequences. These are
+computed for each trick that passes all the filters above. These sequences
+aren't unique, and it'd be painful to generate all the possible ones. I
+chose to limit the search for the one involving the lowest throws
+possible. Start up sequences can be at most n-1 throws long for n object
+patterns. This is seen by the fact that the lowest throw you could have
+is a -n, and it could appear in the second position at the earliest.
+(Remember: the first throw has to be the highest one!) It can therefore
+point at most n-1 positions in front of the first throw. I basically
+walk through the trick, and set 1's in a work array at the positions
+referred to by the trick. I then assign each location with a 1 a throw
+that carries it to the next unoccupied (non-1'd). The landing position is
+given a 1 to mark that it is now being referred to, and I continue with
+the next 1 after the original one, until I reach the beginning of the
+trick. This method is a bit hard to explain, so if you want to know how
+that's done, just stare at the code until you figure it out. Finishing
+sequences are generated similarly.
+  As mentioned above, start up sequences aren't unique. I welcome you to
+find your own. I selected the ones with the lowest throws; another
+selection rule would be to generate those with the fewest number of
+throws deviating from the regular pattern. F.ex., the five object trick
+7 7 1 has the start up sequence 6 6 (listed), but you can also start it
+with a 7 5. The 7 5 involves a 7, which is higher than the 6's (and
+therefore harder), but on the other hand, it only has one abnormal
+throw, while the 6 6 has two.
+  Some finishing sequences will perhaps be a bit dumb, like 1 1 2 2, etc.
+However, once you get interested in a trick enough to learn it and want
+to stop it after along run, you should be able to find your own
+variations of the stop sequences. F.ex., a 1 1 is equivalent to a 2 0,
+which may be easier to do.
+  I explicitly opted against trying to find connection sequences between
+different excited tricks, as that would produce far too many numbers. If
+1000 tricks are generated, each trick would need 999 coupling sequences
+listed next to it. Clearly that's ridiculous. If you really want to
+string excited tricks together, you can either do the finish sequence
+listed, and then the listed start up sequence, or you can work out your
+own connecting sequence for your particular combination of tricks.
+  It's great fun going down the lists of site swaps, and try to figure
+out what some tricks are doing. Take the 8 8 5 1 7 1, a hard five object
+trick. First you throw two up high, which you follow by a 5 1 and a 7 1.
+5 1 is a three shower, while 7 1 is a four shower. You therefore park two
+up high, shower three for one cycle, then shower four for one cycle, and
+then start over. An easier trick, also with five, is the above mentioned
+7 7 7 1 7 1. It's mostly a four shower (7 1 7 1), but with one extra that
+gets showered 'the wrong way'.) I don't think you could ever think of tricks
+like those on your own. Similar examples exist all over the tables, and at
+all number levels. Enjoy the tricks, and be sure to let the rest of the
+juggling community know of especially neat tricks you find in the tables!
+                                                        Bengt
+
+From JUGGLING@INDYCMS.BITNET Wed Feb  6 01:18:54 1991
+Received: from oregon.uoregon.edu by skinner.cs.uoregon.edu with SMTP
+	(5.61.14/IDA-1.2.8) id AA00521; Wed, 6 Feb 91 01:18:52 -0800
+Received: from INDYCMS.IUPUI.EDU by oregon.uoregon.edu; Wed, 6 Feb 91 01:17 PST
+Received: by INDYCMS (Mailer R2.07) id 9313; Wed, 06 Feb 91 04:16:24 EST
+Date: Wed, 6 Feb 91 01:11:57 PST
+From: Bengt Magnusson <bengt@VOODOO.BITNET>
+Subject: Excited State Tricks
+Sender: "Juggling - For Jugglers of all abilities." <JUGGLING@INDYCMS.BITNET>
+To: "Peter D. Mark" <pdm@CS.UOREGON.EDU>
+Reply-To: "Juggling - For Jugglers of all abilities." <JUGGLING@INDYCMS.BITNET>
+Message-Id: <C32724A7583FE016BC@oregon.uoregon.edu>
+X-Envelope-To: pdm@CS.UOREGON.EDU
+Comments: Warning -- original Sender: tag was
+Status: RO
+
+  First, another bug in the posted version of the ground state trick
+program. It's fairly likely to not have caused much trouble, but the
+potential is there, and it should be fixed. I simply fell into a common
+C trap, and thought my array was numbered from 1 to wlen, when it's
+really numbered from 0 to wlen-1. The program will therefore ask the
+array pointer to point one position beyond the array limit. For most
+storage allocators, this will probably be OK, but you never know. Even
+though my version runs fine with that bug, it might not always do so.
+The simplest fix I can think of is to insert the line "pos--;" right after
+the storage allocation, which is in line 59. In this way, the pointer will
+always be within the array limits.
+  Also, remember to change the two occurrences of 'infp' to 'outfp,' or
+the program will not compile at all!
+  I just finished writing a program that deals with the excited state
+tricks. The old old program that claimed to do those really didn't, at
+least not very well. In particular, many of the start up and finish
+sequences were given incorrectly by that program. (Recall: a ground state
+trick can be thrown directly from the normal pattern, while an excited
+state trick has to be 'gotten into' by throwing a start up sequence. Once
+that is done, the trick can be done indefinitely. When you want to return
+to the normal pattern, you must likewise throw a special finish sequence.)
+Hopefully this new version will be correct. It's written in ANSI C, as is
+the ground state trick program. I will post it in a little while, when I'm
+sure there are no bugs in it.
+  Excited state tricks are difficult to categorize. The incorrect start up
+and finish sequences, together with the many tabulated tricks that aren't
+really excited, show some of the difficulties. F.ex., 441 is a well known
+ground state trick with three objects. However, 414 and 144 are both excited
+in the sense that you can't just throw a 414 from a cascade. Still, it seems
+like 414 and 144 do not merit their own place in an excited table, as they
+can just be cyclically shifted to a ground state trick. The algorithm must
+look for these things. Further evidence of how easy it can be to misidentify
+excited tricks is given by the fact that our long time favorite example of
+a three object excited trick, 51414, is not excited at all! The cyclic 
+45151 is a ground state trick. Oops. It's still not clear to me whether
+excited tricks that are just the juxtaposition of two shorter excited tricks
+should be tabulated. In the case of ground state tricks, it's fairly clear
+to me that they shouldn't, as we know any two ground state tricks can be
+strung together. However, we don't know right off hand which excited state
+tricks can follow each other, and therefore maybe excited combinations should
+be included in the table. (It seems like any excited tricks with the same
+start up sequences should be able to follow each other. Maybe each excited
+word length should be further subdivided into tricks with identical start up
+sequences? This would define an equivalence class of tricks, by the way.
+(The last comment for the mathematically interested.))
+  Finally, it should be noticed that the number of excited tricks is much
+larger, for a given word length, than the number of ground state tricks.
+However, many of these require ridiculously high throws (try throwing 15's),
+and the program will ask you for the highest throws you'll allow in order to
+cut down the size of the tables.
+  Once again, the program for excited tricks will appear in a few days.
+                                                Bengt@Voodoo.Ucsb.Edu
+
+From bengt@voodoo.physics.ucsb.edu Wed Jan 30 12:01:46 1991
+Received: from voodoo.physics.ucsb.edu by skinner.cs.uoregon.edu with SMTP
+	(5.61.14/IDA-1.2.8) id AA12129; Wed, 30 Jan 91 12:01:41 -0800
+Received: from pcs1.hepnet by voodoo.physics.ucsb.edu with VMSmail ;
+	Wed, 30 Jan 91 11:48:34 PST
+Date:    Wed, 30 Jan 91 11:44:53 PST
+From: bengt@voodoo.physics.ucsb.edu (Bengt Magnusson)
+Message-Id: <910130114454.20a04206@pcs1.physics.ucsb.edu>
+Subject: RE: site swaps
+To: pdm@cs.uoregon.edu
+X-St-Vmsmail-To: ST%"pdm@cs.uoregon.edu@spencer.cs.uoregon.edu"
+Status: RO
+
+ Two in one hand, with the other on empty, would be denoted 4 0. Two in one, 
+and one in the other, with the throws staggered, is 4 4 4 0. The published
+notation requires the hands to be staggered. However, it is easily adapted to
+parallel throws, and even crossing throws with even numbers (and half
+showers with odd numbers). F.ex., an odd number half shower requires the hands
+to throw simultaneously, and we'd call those throws 6_c 4_c, where the _c is
+to be read as a subscript, and 'c' stands for 'crossing.' Similarly, you can
+add a _p subscript for 'parallel,' and you'd call the 2 in one, 1 in the 
+other a 4_p 4_p 4_p 0_p.				BM
+
