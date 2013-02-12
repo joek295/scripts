@@ -1,6 +1,42 @@
 #! /usr/bin/env python
+# A gtk wrapper for teatimer, written in python
+# ToDo: close widget when timer started/add a close button
 
 import gtk
+import subprocess
+
 timer = gtk.Window()
-# make window look how I want it: radio buttons
-show.timer()
+buttonbox = gtk.VBox()
+timer.add(buttonbox)
+
+# create buttons
+black = gtk.Button("Black Tea")
+green = gtk.Button("Green Tea")
+oolong = gtk.Button("Oolong Tea")
+herbal = gtk.Button("Herbal Tea")
+
+# pack buttons into the vbox in timer window
+buttonbox.pack_start(black)
+buttonbox.pack_start(green)
+buttonbox.pack_start(oolong)
+buttonbox.pack_start(herbal)
+
+# What to do when each button is clicked
+def blackclicked(btn):
+  subprocess.call(['/home/joe/scripts/teatimer', 300])
+def greenclicked(btn):
+  subprocess.call(['/home/joe/scripts/teatimer'])
+def oolongclicked(btn):
+  subprocess.call(['/home/joe/scripts/teatimer', 240])
+def herbalclicked(btn):
+  subprocess.call(['/home/joe/scripts/teatimer', 480])
+
+# associate the buttons to functions defined above
+black.connect("clicked", blackclicked)
+green.connect("clicked", greenclicked)
+oolong.connect("clicked", oolongclicked)
+herbal.connect("clicked", herbalclicked)
+
+# make everything actually show up
+timer.show_all()
+gtk.main()

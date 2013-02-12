@@ -1,14 +1,19 @@
-#!/bin/bash
+#!/bin/sh
+
+TIME=180
+MESSAGE="Tea's Up!"
+BELL="~/misc/chime.wav"
 
 # default functionality informs user that her tea is ready after three minutes
 if [ $# -lt 1 ]; then
-  sleep 180
+  sleep $TIME
 fi
 
-# allow a custom time length (in seconds)
+# allow a custom time length (in seconds): if a number is given after the command
 if [ $# = 1 ]; then
   sleep $1
 fi
 
-notify-send "Tea's up!"
-aplay ~/misc/chime.wav
+# what to do once count-down has finished
+notify-send $MESSAGE
+aplay $BELL
