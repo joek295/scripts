@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+#Module which simulates the action of dice and coins
+#An extension of the module 'random'
+from random import choice
+def dice (x):
+  rolls = []
+  while x > 0:
+    roll = choice([1, 2, 3, 4, 5, 6])
+    rolls.append(roll)
+    x = x - 1
+
+def coin (x):
+  flips = []
+  while x > 0:
+    toss = choice ([0, 1])
+    if toss == 1:
+      flips.append("H")
+    elif toss == 0:
+      flips.append("T")
+    x = x - 1
