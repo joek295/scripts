@@ -1,0 +1,45 @@
+#!/bin/sh
+# asciitex formats a .txt file as .tex
+# command syntax: `asciitex filename [title [author]]`
+# known bugs: author and title must not contain spaces
+# to do: __ ** and ^^ denote italic, boldface and superscript
+
+AUTHORNAME="JKitchen"
+STARTDATA="/home/joe/scripts/latexstart"
+ENDDATA="/home/joe/scripts/latexend"
+TEMPFILE="/home/joe/tmp"
+
+# catch invalid syntax
+if [ $# -lt 1 ]; then
+    echo "Use 'asciitex <filename> ["title" ["author"]]'."
+    exit
+fi
+
+# is an author argument passed?
+if [ $3 ]; then
+  AUTHORNAME=$3
+fi
+
+# add \\ to the end of each line and add header and footer metadata
+sed '/./ a\ \\\\' $1 > $TEMPFILE
+cat $STARTDATA $TEMPFILE $ENDDATA > $1
+
+# escape &, %, and $ 
+sed -e 's/\&/\\\&/g' -e 's/\%/\\\%/g' -e 's/\$/\\\$/g' <$1 > $TEMPFILE
+
+# format 1st, 2nd, 3rd, etc.
+sed -e 's/1st\ /1\$\^st\$\ /g' -e 's/2nd\ /2\$\^nd\$\ /g' -e 's/3rd\ /3\$\^rd\$\ /g'\
+  -e 's/[4-9]th\ /&\$\^th\$\ /g' -e 's/0th\ /0\$\^th\$\ /g'
+
+# give the file a \title{} and \author{}
+sed 's/\\author{}/\\author{'$AUTHORNAME'}/' $TEMPFILE > $1 
+if [ $2 ]; then
+  TITLE=$2
+  sed 's/\\title{}/\\title{'$TITLE'}/' $1 > $TEMPFILE
+  cat $TEMPFILE > $1.tex
+else
+  cat $1 > $1.tex
+fi
+
+# clean-up
+rm $TEMPFILE $1
