@@ -2,7 +2,7 @@
 
 TIME=180
 MESSAGE="Tea's Up!"
-BELL="~/misc/chime.wav"
+BELL="/home/joe/documents/misc/chime.wav"
 
 # default functionality informs user that her tea is ready after three minutes
 if [ $# -lt 1 ]; then

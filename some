@@ -1,0 +1,80 @@
+#!/bin/bash
+# some is less with added source hilighting
+# requires source-highlight (`aptitude install source-highlight` on Debian)
+# taken from jakobcreutzfeldt on the arch fora
+
+if [ ! -x `which source-highlight` ]; then
+    echo "GNU source-highlight is required" && exit 1
+fi
+
+if [[ $1 == "--help" ]]; then
+    echo "some: it's like less but with more"
+    echo ""
+    echo "USAGE: some [FILE]"
+    echo "       some - [LANGUAGE]"
+    echo ""
+    echo "To read from a pipe, use the second form. In this case, you"
+    echo "must specify a language for the syntax coloring. See"
+    echo "source-highlight(1) for more info"
+    exit 0
+fi
+
+# source-highlight can autodetect many file extensions but it still
+# misses some. If you use this and the output isn't properly colorized
+# you should create your own lang.map file copying the system one and
+# extend it as necessary. 
+#
+# Default: $HOME/.config/source-highlight/lang.map
+if [ -e $XDG_CONFIG_HOME/source-highlight/lang.map ]; then
+    LANG_MAP=$XDG_CONFIG_HOME/source-highlight/lang.map
+else
+    LANG_MAP=/usr/share/source-highlight/lang.map
+fi
+
+# Arguments to pass to source-highlight. You can add more arguments
+# here, like '-n' to add line-numbering
+S_H_ARGS="--failsafe --lang-map=${LANG_MAP} -f esc -o STDOUT"
+
+OLD_IFS=$IFS
+IFS=""
+buf=""
+if [[ $1 == "-" ]]; then
+    while read line; do
+  if [[ "x$line" == "x" ]]; then
+      line="\f"
+  fi
+        buf=`cat <(echo $buf) <(echo $line)`
+    done
+fi
+IFS=$OLD_IFS
+
+if [[ "x$buf" != "x" ]]; then
+    echo -e "$buf" | source-highlight $S_H_ARGS -s $2 | less -r
+    exit 0
+fi
+
+if [ ! -e $1 ]; then
+    echo "$1: No such file or directory" && exit 1
+fi
+
+do_less()
+{
+    if [ $# -eq 2 ]; then
+  source-highlight $S_H_ARGS -s $2 -i $1 | less -R
+    else
+  source-highlight $S_H_ARGS -i $1 | less -R
+    fi
+}
+
+
+filename=`basename $1`
+ext=${filename#*.}
+base=`basename $filename .$ext`
+
+# Use Bash highlighting for dotfiles
+if [[ $filename == .$ext ]]; then
+    do_less $1 bash
+    exit 0
+fi  
+# Otherwise let source-highlight guess
+do_less $1
