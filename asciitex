@@ -1,8 +1,14 @@
 #!/bin/sh
 # asciitex formats a .txt file as .tex
+
 # command syntax: `asciitex filename [title [author]]`
-# known bugs: author and title must not contain spaces
-# to do: __ ** and ^^ denote italic, boldface and superscript
+
+# known bugs: 
+# author and title may not contain spaces
+
+# to do:
+# __ ** and ^^ denote italic, boldface and superscript
+# deal with fractions
 
 AUTHORNAME="JKitchen"
 STARTDATA="/home/joe/scripts/latexstart"
