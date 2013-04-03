@@ -1,0 +1,13 @@
+#! /usr/bin/env python
+
+from sys import argv
+
+arabic = sys.argv[1]
+
+thousands = arabic/1000
+arabic = arabic - 1000*thousands
+hundreds = arabic/100
+arabic = arabic - 100*hundreds
+tens = arabic/10
+ones = arabic - 10*tens
+

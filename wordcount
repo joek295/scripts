@@ -1,10 +1,22 @@
 #!/bin/bash
-# words.sh
-# counts words in selection and displays result in zenity window
-# dependencies xsel, wc, zenity
-# taken from johnraff in #! fora
+# wordcounter
 
-text=$(xsel)
-words=$(wc -w <<<$text)
-zenity --info --title "Word Count" --text "Words in selection:\n${words}\n\n\"${text}\""
-exit
+TEMPFILE=/home/joe/tempfile
+
+if [ $# -lt 1 ]; then
+    echo "Use 'wordcount <filename>'."
+    exit
+fi
+if [ $1 ]; then
+    if [ ! -f "$1" ]; then
+        echo "Filename does not exist."
+        exit
+    else
+        FILENAME="$1"
+    fi
+fi
+
+cat $FILENAME > $TEMPFILE
+sed 's/\.//g;s/\(.*\)/\L\1/;s/\ /\n/g' $TEMPFILE | sort | uniq -c | sort -nr | head -n 20
+
+rm $TEMPFILE

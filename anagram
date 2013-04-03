@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+# take an input string and return all exact single-word anagrams of this word
+
+from sys import argv
+
+wordlist = '/usr/share/dict/words'
+
+script, word = argv
+wordlength = len(word)
+words = open(wordlist)
+lengthwords = []
+characters = []
+letters = []
+solutions = []
+
+for testword in words:
+  newtest = testword.rstrip()
+  if len(newtest) == wordlength:
+    lengthwords.append(newtest)
+
+for c in word:
+  characters.append(c)
+  characters.sort()
+
+for w in lengthwords:
+  for c in w:
+    letters.append(c)
+    letters.sort()
+    if letters == characters:
+      solutions.append(w)
+  letters = []
+print solutions
