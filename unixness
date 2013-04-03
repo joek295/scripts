@@ -1,6 +1,6 @@
 #!/bin/bash
-# a silly script from the arch fora
-# returns a 'unixness' rating for your system.
-# The higher your score, the more unix-like your system
+# a silly script from the arch fora: returns a 'unixness' rating for your system.
+# The higher your score, the more 'unix-like' your system
+
 T=$(sudo find {,/usr}/{{s,}bin,lib} /usr/include /boot /etc -type f ! -empty -printf "%s\n" | awk '{t+=$1} END {print t}')
 sudo find {,/usr}/{{s,}bin,lib} /usr/include /boot /etc -type f ! -empty -printf "%s\n" | awk -v t=$T '{p=$1/t; h += -p*log(p)/log(2)} END {print h}'

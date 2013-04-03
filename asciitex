@@ -9,6 +9,7 @@
 # to do:
 # __ ** and ^^ denote italic, boldface and superscript
 # deal with fractions
+# change " and ' at the beginning of quotations to `` and ` respectively
 
 AUTHORNAME="JKitchen"
 STARTDATA="/home/joe/scripts/latexstart"
