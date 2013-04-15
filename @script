@@ -3,7 +3,7 @@
 # @script makes a new file, makes it executable, then opens it in vim.
 # based on script taken from rhowaldt on the #! fora, and improved by xaos52
 
-_LOCATION="/home/joe/scripts"
+_LOCATION="$HOME/scripts"
 _PATH=""
 _TOUCH="touch"
 _CHMOD="chmod"
