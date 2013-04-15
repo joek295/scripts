@@ -2,6 +2,7 @@
 # 1.5Kb python webbrowser script
 # invoke `python browser www.pathtourl.tld`
 # found at kmandla.wordpress.com/2010/05/24/the-1-2kb-python-browser-script
+
 import sys
 import gtk
 import webkit

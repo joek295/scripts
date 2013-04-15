@@ -1,3 +1,6 @@
 #!/bin/bash
-DIR=/home/joe/wallpapers
-find $DIR -type f -print | shuf -n 1 | xargs hsetroot -full
+
+DIR=$HOME/images/desktops
+SET_COMMAND="hsetroot -full"
+
+find $DIR -type f -print | shuf -n 1 | xargs $SET_COMMAND

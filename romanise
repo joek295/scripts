@@ -1,8 +1,9 @@
 #! /usr/bin/env python
 
-from sys import argv
+import sys
 
-arabic = sys.argv[1]
+arabic = int(sys.argv[1])
+roman = []
 
 thousands = arabic/1000
 arabic = arabic - 1000*thousands
@@ -11,3 +12,47 @@ arabic = arabic - 100*hundreds
 tens = arabic/10
 ones = arabic - 10*tens
 
+if thousands > 0:
+  for i in 1, thousands:
+    roman.append('M')
+
+if hundreds > 0:
+  if hundreds == 9:
+    roman.append('CM')
+    hundreds = 0
+  elif hundreds >= 5:
+    roman.append('D')
+    hundreds = hundreds - 5
+  elif hundreds == 4:
+    roman.append('CD')
+  else:
+    for i in 1, hundreds:
+      roman.append('C')
+
+if tens > 0:
+  if tens == 9:
+    roman.append('XC')
+    tens = 0
+  elif tens >= 5:
+    roman.append('L')
+    tens = tens - 5
+  elif tens == 4:
+    roman.append('XL')
+  else:
+    for i in 1, tens:
+      roman.append('X')
+
+if ones > 0:
+  if ones == 9:
+    roman.append('IX')
+    ones = 0
+  elif ones >= 5:
+    roman.append('V')
+    ones = ones - 5
+  elif ones == 4:
+    roman.append('IV')
+  else:
+    for i in 1, ones:
+      roman.append('I')
+
+print roman

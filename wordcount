@@ -1,7 +1,7 @@
 #!/bin/bash
 # wordcounter
 
-TEMPFILE=/home/joe/tempfile
+TEMPFILE=$HOME/tempfile
 
 if [ $# -lt 1 ]; then
     echo "Use 'wordcount <filename>'."

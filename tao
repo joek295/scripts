@@ -1,7 +1,7 @@
 #!/bin/bash
 # a script for outputting a verse of the Tao Te Ching.
 
-tao=$HOME/documents/ebooks/Tao_Te_Ching.txt
+tao=$HOME/documents/ebooks/tao_te_ching.txt
 range=($(echo {1..81}))
 verse=0
 

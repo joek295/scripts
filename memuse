@@ -1,6 +1,7 @@
 #!/usr/bin/perl
  
 # topsum v0.1 - sum multiple instances from top to get cumulative memory usage
+# found via K Mandla's blog, Motho Ke Motho Ka Botho
  
 @topsum = `top -n 1 -b`;
  

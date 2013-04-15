@@ -3,13 +3,13 @@
 # this script starts from a random full stop, then prints the following
 # sentence(s) until reaching a full stop.
 
-tao=$HOME/documents/ebooks/Tao_Te_Ching.txt
+tao=$HOME/documents/ebooks/tao_te_ching.txt
 # you can chose between /dev/random which is slow but provides ``more random''
 # numbers than the faster /dev/urandom
 dev_rand=/dev/urandom
 #dev_rand=/dev/random
 startline_num=0
-lines=($(cat /home/joe/documents/ebooks/Tao_Te_Ching.txt | grep -n -s "\." | sed 's/:.*//'))
+lines=($(grep -n -s "\." $tao | sed 's/:.*//'))
 
 # shuffle function based on Knufth-Fisher-Yayes shuffle algorithm
 # http://mywiki.wooledge.org/BashFAQ/026 thank you!

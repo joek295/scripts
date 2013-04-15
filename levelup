@@ -1,13 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 # count how many lines of code have been written in a language,
 # and tell a user what 'level' ze is on
 
-DIRECTORY = /home/joe/scripts
+DIRECTORY=$HOME/scripts
 
-# find files in DIRECTORY
-find $DIRECTORY type -f
-
-# decide which files use which language 
-# by grepping them for #!/bin/sh. #!usr/bin/python, &c.
+for i in $DIRECTORY/*; do
+  if [[ file -ib $i == "text/x-python*" ]]; then
+    #something
+  fi
+  if [[ file -ib $i == "text/x-shellscript*" ]]; then
+  fi
+done
 
 # count lines of each file
+#grep -c is our friend here
+# something like:
+# grep -c ^[whitespace]#
