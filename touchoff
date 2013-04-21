@@ -1,2 +1,0 @@
-#!/bin/bash
-/usr/bin/synclient touchpadoff=`lsusb | grep Logitech | wc -l`
