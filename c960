@@ -1,0 +1,35 @@
+#! /usr/bin/env python
+# fischerandom setup modeller
+
+import random
+
+black_squares = ["a", "c", "e", "g"]
+white_squares = ["b", "d", "f", "h"]
+
+bb_start = random.choice(black_squares)
+bw_start = random.choice(white_squares)
+# ValueError: list.remove(x): x not in list
+black_squares.remove(bb_start)
+white_squares.remove(bw_start)
+squares = black_squares + white_squares
+q_start = random.choice(squares)
+squares.remove(q_start)
+n1_start = random.choice(squares)
+squares.remove(n1_start)
+n2_start = random.choice(squares)
+squares.remove(n2_start)
+squares.sort()
+bb_start = bb_start + ": B"; bw_start = bw_start + ": B"
+q_start = q_start + ": Q"
+n1_start = n1_start + ": N"
+n2_start = n2_start + ": N"
+r1_start = squares[0] + ": R"
+k_start = squares[1] + ": K"
+r2_start = squares[2] + ": R"
+
+start_positions = [bb_start, bw_start, q_start, n1_start, n2_start, k_start, r1_start, r2_start]
+
+start_positions.sort()
+
+print start_positions
+

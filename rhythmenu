@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# found this at: http://code.sagotsky.com/?p=31
+# selects song from dmenu, plays in rhythmbox
+
+# must be same as path in rhythmbox, or else rb will add to library
+MUSIC="$HOME/media/music/"
+DMENU_OPTS="-l 24 -b -i -nb #2e3436 -nf #9999CC"
+CMD="rhythmbox-client --play-uri="
+
+SONGFILE=$( find $MUSIC -name "*.*" | sed -e "s/\/home\/joe\/media\/music//g" | dmenu $DMENU_OPTS )
+
+if [ $? -eq 0 ] ; then
+  $CMD"$MUSIC/$SONGFILE"
+fi

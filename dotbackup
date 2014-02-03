@@ -1,0 +1,7 @@
+#!/bin/bash
+FILELIST=$HOME/.config/backedupfiles
+BACKUPDIR=$HOME/tmp
+
+cat $FILELIST | while read dotfile; do
+  cp -r $dotfile $BACKUPDIR
+done

@@ -1,0 +1,12 @@
+#!/bin/bash
+# A replacement for fclean and fclean_dir
+# searches recursively through directory for files with un-unixy names, and makes them cleaner
+# replaces capitals with lowercase
+# replaces spaces with underscores
+# removes any characters not in the sets [a-z] [0-9] _ .
+# leaves a log file, detailing the name changes
+# NOTE: Be careful when using this on your home directory, as it may change the names of configuration files
+# For instance, .Xauthority and .Xresources would be renamed
+
+find . -name "*[A-Z ]*" -exec rename -v 'tr/[A-Z][ ]/[a-z][_]/' '{}' > .cleaner.log \; 
+find . -name "*[\!\?\,\[\]\{\}\(\)]*" -exec rename -v 's/[^\w\.\/]//g' '{}' > .cleaner.log \;

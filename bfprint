@@ -1,0 +1,30 @@
+#! /usr/bin/env python
+
+# bfprint: translates a string into a brainfuck program which will print that string
+# Brainfuck commands: 
+# > increment pointer
+# < decrement pointer
+# + increment value of byte at pointer
+# - decrement value of byte at pointer
+# . output value of byte at pointer
+# , accept one byte of input, storing value at pointer
+# [ if the byte at the pointer has a value of zero, jump forward to the command after the matching ]
+# ] if the byte at the pointer has a non-zero value, jump backwards to the command after the matching [
+
+# Step one: take input string and translate ascii to decimal
+def asciify(string):
+    for char in string:
+        charlist.append(char)
+    for item in charlist:
+        asciilist.append(ord(item))
+
+# common characters?
+def common(l):
+    print "stuff will happen here"
+
+# set the byte-values to sensible positions (one probably at 32 :P ) using a loop
+def setup (startlist):
+    # startlist should look something like this: [32, 57, 37, 78]
+    bf = bf + "+++++ +++++" + "["
+    for num in startlist:
+        bf = bf + "> " + num/10*"+" 

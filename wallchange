@@ -1,0 +1,7 @@
+#!/bin/sh
+
+_bgset='hsetroot -full'
+_dir='$HOME/wallpapers'
+
+_desk = xprop -root | grep "CURRENT_DESKTOP(" | cut -c 34
+$_bgset $_dir/$_desk.*

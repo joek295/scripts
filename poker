@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+  echo "SYNTAX: poker [hand1] [hand2] ... [handN]"
+  exit 1
+fi
+
+if [ $# -eq 1 ]; then
+  echo "Please enter multiple poker hands to compare."
+  exit 1
+fi
+
+P1=$1
+# stuff with expr
+CARD1=`expr match "$1" '\(.[CDHS]\)'`
+$(P1#.[CDHS])
+CARD2=`expr match "$1" '\(.[CDHS]\)'`
+$(P1#.[CDHS])
+CARD3=`expr match "$1" '\(.[CDHS]\)'`
+$(P1#.[CDHS])
+CARD4=`expr match "$1" '\(.[CDHS]\)'`
+$(P1#.[CDHS])
+CARD5=`expr match "$1" '\(.[CDHS]\)'`
+$(P1#.[CDHS])

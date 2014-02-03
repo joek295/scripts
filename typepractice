@@ -1,0 +1,19 @@
+#!/bin/sh
+# due to the size of the default wordlist, expect some obscure words
+
+CHAR='[a-z]'
+DICT='/usr/share/dict/words'
+MINWORD=4
+MAXWORD=7
+
+if [ $# -lt 1 ]; then
+  grep -w ''$CHAR'\{4,7\}' $DICT | shuf -n 10 
+fi
+
+if [ $1 ]; then
+  CHAR=$1
+  grep -w ''$CHAR'\{4,7\}' $DICT | shuf -n 10
+fi
+
+# readline is our friend, here
+# 'readline takes a line from the terminal and return it, using prompt as a prompt' - readline man page

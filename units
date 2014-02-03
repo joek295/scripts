@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+import gtk
+
+calculator = gtk.Window()
+text = gtk.Entry()
+abv = gtk.Button("ABV")
+vol = gtk.Button("Volume")
+go = gtk.Button("Calculate")
+
+vbox = gtk.VBox()
+calculator.add(vbox)
+
+vbox.pack_start(text)
+vbox.pack_start(abv)
+vbox.pack_start(vol)
+vbox.pack_start(go)
+
+def unitcalc(volume, strength):
+  units = (volume * strength) / 1000
+  text.set_text(units)
+
+calculator.show_all()
+gtk.main()

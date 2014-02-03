@@ -1,0 +1,12 @@
+#!/bin/sh
+# play music in vlc
+
+MUSIC="$HOME/media/music/"
+DMENU_OPTS="-l 24 -b -i -nb #2e3436 -nf #9999CC"
+CMD="cvlc "
+
+SONGFILE=$( find $MUSIC -name "*.*" | sed -e "s/\/home\/joe\/media\/music//g" | dmenu $DMENU_OPTS )
+
+if [ $? -eq 0 ] ; then
+  $CMD"$MUSIC/$SONGFILE"
+fi
