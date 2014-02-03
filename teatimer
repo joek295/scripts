@@ -1,8 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 TIME=180
 MESSAGE="Tea's Up!"
+QUOTES=$HOME/documents/misc/teaquotes
 BELL=$HOME/misc/chime.wav
+oolong=180
+green=120
+black=240
+herbal=360
 
 # default functionality informs user that her tea is ready after three minutes
 if [ $# -lt 1 ]; then
@@ -10,10 +15,27 @@ if [ $# -lt 1 ]; then
 fi
 
 # allow a custom time length (in seconds): if a number is given after the command
-if [ $# = 1 ]; then
+if [[ $# = 1 ]]; then
+  if [[ $1 == "-o" ]]; then
+    sleep $oolong
+  fi
+else
+  if [[ $1 == "-b" ]]; then
+    sleep $black
+  fi
+else
+  if [[ $1 == "-g" ]]; then
+    sleep $green
+  fi
+else
+  if [[ $1 == "-h" ]]; then
+    sleep $herbal
+  fi
+else
   sleep $1
 fi
 
 # what to do once count-down has finished
 notify-send $MESSAGE
 aplay $BELL
+exit 0

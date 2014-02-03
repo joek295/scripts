@@ -1,4 +1,5 @@
 Miscellaneous scripts, mostly written in bash.
+
 Some python and perl.
 
 The most useful of these:
@@ -19,4 +20,5 @@ Probably of no interest to anyone other than me:
 * touchpad_toggle - toggles whether a touchpad is on or off
 
 Scripts taken off of the internet are where possible credited.
+
 All uncredited scripts are (probably) my own, and are free for use, re-distribution, and modification without any restrictions.

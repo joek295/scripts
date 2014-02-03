@@ -1,6 +1,26 @@
 #! /bin/bash
 
 WORDLIST=$HOME/documents/misc/scrabble_wordlist
+SEARCH='grep -w'
+
+check ()
+{
+  if [[ $# -lt 1 ]]; then
+    echo "please enter a search term to check against the scrabble dictionary"
+    exit 1
+  fi
+  # a neat trick from the Useless Use of Cat awards page
+  # we are running grep here for its exit code;
+  # if there is a match it will return exit 0 and the if loop will succeed
+  # otherwise it will return exit 1 and the loop will fail
+  # redirection is to /dev/null so as not to pollute stdout
+  if grep -w $1 $WORDLIST > /dev/null; then
+    echo "Valid play"
+    exit 0
+  fi
+  echo "Invalid play"
+  exit 0
+}
 
 if [[ $# -lt 1 ]]; then
   echo "Use 'allowed [REGEXP]' to search the scrabble dictionary for matches"
@@ -10,27 +30,17 @@ if [[ $# -lt 1 ]]; then
 fi
 
 if [[ $1 == "-c" ]]; then
-  if [[ $# -lt 2 ]]; then
-    echo "allowed requires a search term to check against the scrabble dictionary"
-    exit 1
+  check $2
+else
+  if [[ $1 == "--check" ]]; then
+    check $2
   fi
-  # a neat trick from the Useless Use of Cat awards page
-  # we are running grep here for its exit code;
-  # if there is a match it will return exit 0 and the if loop will succeed
-  # otherwise it will return exit 1 and the loop will fail
-  # redirection is to /dev/null so as not to pollute stdout
-  if grep -w $2 $WORDLIST > /dev/null; then
-    echo "Valid play"
-    exit 0
-  fi
-  echo "Invalid play"
-  exit 0
 fi
 
-if [[ $1 == "--sides" ]]; then
-  grep $2 $WORDLIST
-  exit 0
+if [[ $2 == "--sides" ]]; then
+  SEARCH='grep'
 fi
 
-# standard usage is to grep the pattern following `allowed` in my copy of the scrabble dictionary
-grep -w $1 $WORDLIST
+# standard usage is to grep the pattern following `allowed` in my copy of the 
+# scrabble dictionary
+$SEARCH $1 $WORDLIST

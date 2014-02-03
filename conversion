@@ -12,6 +12,7 @@ mlpt = gtk.Button("Millilitres to Pints")
 ptml = gtk.Button("Pints to Millilitres")
 CtoF = gtk.Button("Celsius to Fahrenheit")
 FtoC = gtk.Button("Fahrenheit to Celsius")
+cupsoz = gtk.Button("Cups to Ounces")
 quit = gtk.Button("Quit")
 
 vbox = gtk.VBox()
@@ -24,6 +25,7 @@ calculator.add(vbox)
 
 weightbox.pack_start(gramsoz)
 weightbox.pack_start(ozgrams)
+weightbox.pack_start(cupsoz)
 volumebox.pack_start(mlpt)
 volumebox.pack_start(ptml)
 tempbox.pack_start(CtoF)
@@ -34,41 +36,44 @@ vbox.pack_start(volumebox)
 vbox.pack_start(tempbox)
 vbox.pack_start(quit)
 
+def output(out):
+  returns = str(out)
+  text.set_text(returns)
+
 def ozgramsclicked(btn):
   usrinput = float(text.get_text())
   result = usrinput*28.35
-  returns = str(result)
-  text.set_text(returns)
+  output(result)
 
 def gramsozclicked(btn):
   usrinput = float(text.get_text())
   result = usrinput*0.03527
-  returns = str(result)
-  text.set_text(returns)
+  output(result)
 
 def mlptclicked(btn):
   usrinput = float(text.get_text())
   result = usrinput*0.00176
-  returns = str(result)
-  text.set_text(returns)
+  output(result)
 
 def ptmlclicked(btn):
   usrinput = float(text.get_text())
   result = usrinput*568.3
-  returns = str(result)
-  text.set_text(returns)
+  output(result)
 
 def celsiusfahren(btn):
   usrinput = float(text.get_text())
   result = usrinput * 9.0 / 5.0 + 32
-  returns = str(result)
-  text.set_text(returns)
+  output(result)
 
 def fahrencelsius(btn):
   usrinput = float(text.get_text())
   result = (usrinput - 32) * 5.0 / 9.0
-  returns = str(result)
-  text.set_text(returns)
+  output(result)
+
+def cupsozclicked(btn):
+  usrinput = float(text.get_text())
+  result = usrinput * 8
+  output(result)
 
 def quitclicked(btn):
   gtk.main_quit()
@@ -79,6 +84,7 @@ mlpt.connect("clicked", mlptclicked)
 ptml.connect("clicked", ptmlclicked)
 CtoF.connect("clicked", celsiusfahren)
 FtoC.connect("clicked", fahrencelsius)
+cupsoz.connect("clicked", cupsozclicked)
 quit.connect("clicked", quitclicked)
 
 calculator.show_all()

@@ -4,7 +4,7 @@
 traverse() {
    local d startdir
    cd -- "$1" || exit 1 
-   if [[ $(find -maxdepth 0 -type d -empty) != "." ]]; then
+   if [[ $(find -type d -empty) != "." ]]; then
       for d in *; do
          [ -d "$d" ] && traverse "$d"
          fclean

@@ -3,19 +3,10 @@
 # Requires: dmenu, exo-open
 
 _PATH=$HOME
+DMENU_OPTS="-i -l 20 -nb #2e3436 -nf #9999CC"
+USER="id -un"
+FILES=$( find $_PATH | sed -e "s/\/home\/joe//g" | dmenu $DMENU_OPTS )
 
-#if [ $# -lt 1 ]; then
-#  cat ~/.dmenufm_cache | dmenu -i -l 20 -nb '#2e3436' -nf '#9999CC' | xargs exo-open
-#fi
-
-# if there is a flag following the command dmenufm:
-#if [ $1 ]; then
-#  if [ ! -d "$1" ]; then
-#    echo "location does not exist"
-#  else
-#    _PATH="$1"
-#  fi
-#  find $_PATH | sed 's/ /\\ /g' | dmenu -i -l 20 -nb '#2e3436' -nf '#9999CC' | xargs exo-open
-#fi
-
-find $_PATH | sed 's/ /\\ /g' | dmenu -i -l 20 -nb '#2e3436' -nf '#9999CC' | xargs exo-open
+if [ $? -eq 0 ] ; then
+  exo-open "$_PATH/$FILES"
+fi

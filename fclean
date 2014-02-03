@@ -7,6 +7,6 @@
 
 ls | while read -r FILE
 do
-    mv -v -- "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]' | tr -d "\'" | tr '[A-Z]' '[a-z]' | sed 's/\([0-9][0-9]\)-/\1_/'`
+    mv -v -- "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]?*|' | tr -d "\'" | tr '[A-Z]' '[a-z]' | sed 's/\([0-9][0-9]\)-/\1_/'`
 done
 exit 0
