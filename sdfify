@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ $# -ne 1 ] ; then
+  echo "Use: sdfify FILE"
+  exit 1
+fi
+
+if [ -f $1 ] ; then
+  if grep '#!/bin/bash' $1; then
+    sed 's:/bin/bash:/usr/pkg/bin/bash:' $1
+    exit 0
+  else
+    if grep '#!/usr/pkg/bin/bash' $1; then
+      echo "Already SDF-ified"
+      exit 0
+    fi
+  fi
+else
+  echo $1 "not a valid filename"
+  exit 1
+fi

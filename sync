@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# sync dotfiles
+rsync $HOME/.bashrc $HOME/.bash_aliases $HOME/.bash_logout $HOME/.profile $HOME/.xinitrc $HOME/.Xresources $HOME/.conkyrc $HOME/.Xmodmap $HOME/media/dotfiles
+rsync $HOME/.vim/vimrc $HOME/.vim/autocorrect $HOME/media/dotfiles/.vim
+rsync -r $HOME/.fvwm $HOME/media/dotfiles/.fvwm
+rsync $HOME/.xmonad/conky $HOME/.xmonad/xmonad.hs $HOME/media/dotfiles/.xmonad

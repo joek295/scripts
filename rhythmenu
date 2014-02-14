@@ -1,4 +1,4 @@
-#!/bin/sh
+h!/bin/sh
 
 # found this at: http://code.sagotsky.com/?p=31
 # selects song from dmenu, plays in rhythmbox

@@ -8,6 +8,7 @@ The most useful of these:
 * anagram - takes an input word and returns English single-word anagrams.
 * asciitex - takes a plaintext file and formats it as a latex file.
 * dmenufm & dmenufm_path - a fuzzy file-finder using dmenu
+* mpdmenu - uses dmenu to control mpd
 * fran - performs a Frequency Analysis on a textfile
 * mdcheck - checks if a file's md5sum matches one you give
 * some - less, with syntax highlighting
