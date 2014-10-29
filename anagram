@@ -30,3 +30,4 @@ for w in lengthwords:
       solutions.append(w)
   letters = []
 print solutions
+

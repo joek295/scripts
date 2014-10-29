@@ -17,6 +17,6 @@ if [ $1 ]; then
     fi
 fi
 
-sed 's/./&\n/g' $TEMPFILE | sort | uniq -c | sort -nr | grep [a-zA-Z]
+sed 's/./&\n/g' $TEMPFILE | sort | uniq -c | sort -nr
 
 rm $TEMPFILE

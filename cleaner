@@ -8,5 +8,8 @@
 # NOTE: Be careful when using this on your home directory, as it may change the names of configuration files
 # For instance, .Xauthority and .Xresources would be renamed
 
-find . -name "*[A-Z ]*" -exec rename -v 'tr/[A-Z][ ]/[a-z][_]/' '{}' > .cleaner.log \; 
-find . -name "*[\!\?\,\[\]\{\}\(\)]*" -exec rename -v 's/[^\w\.\/]//g' '{}' > .cleaner.log \;
+# written and maintained by Joe Kitchen at:
+# https://github.com/scripts
+
+find . -depth -name "*[A-Z ]*" -exec rename -v 'tr/[A-Z][ ]/[a-z][_]/' '{}' > .cleaner.log \; 
+find . -depth -name "*[\!\?\,\[\]\{\}\(\)\'\"]*" -exec rename -v 's/[^\w\.\/]//g' '{}' > .cleaner.log \;

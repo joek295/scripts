@@ -7,10 +7,10 @@ The most useful of these:
 * allowed - tells you if a word is a valid scrabble move. 
 * anagram - takes an input word and returns English single-word anagrams.
 * asciitex - takes a plaintext file and formats it as a latex file.
-* dmenufm & dmenufm_path - a fuzzy file-finder using dmenu
+* dmenufm - a fuzzy file-finder using dmenu
 * mpdmenu - uses dmenu to control mpd
 * fran - performs a Frequency Analysis on a textfile
-* mdcheck - checks if a file's md5sum matches one you give
+* mdcheck - checks whether a file has a given md5sum
 * some - less, with syntax highlighting
 * stats - takes a file full of data and performs some statistical analyses
 * wallpaper - a script to set a random wallpaper using hsetroot

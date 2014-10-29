@@ -13,7 +13,7 @@ tens = arabic/10
 ones = arabic - 10*tens
 
 if thousands > 0:
-  for i in 1, thousands:
+  for i in range (0, thousands):
     roman.append('M')
 
 if hundreds > 0:
@@ -26,7 +26,7 @@ if hundreds > 0:
   elif hundreds == 4:
     roman.append('CD')
   else:
-    for i in 1, hundreds:
+    for i in range (0, hundreds):
       roman.append('C')
 
 if tens > 0:
@@ -39,7 +39,7 @@ if tens > 0:
   elif tens == 4:
     roman.append('XL')
   else:
-    for i in 1, tens:
+    for i in range (0, tens):
       roman.append('X')
 
 if ones > 0:
@@ -52,7 +52,7 @@ if ones > 0:
   elif ones == 4:
     roman.append('IV')
   else:
-    for i in 1, ones:
+    for i in range (0, ones):
       roman.append('I')
 
-print roman
+print ''.join(roman)

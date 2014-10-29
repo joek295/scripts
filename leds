@@ -1,4 +1,9 @@
-#!/usr/bin/env python
+#! /usr/bin/env python
+
+# A python program to interface with the caps-, num-, and scroll-lock keys on a
+# keyboard. 
+# Requires root access
+# currently doesn't do anything interesting with the LEDS
 
 import fcntl
 import os
@@ -8,14 +13,17 @@ KDSETLED = 0x4B32
 SCR_LED  = 0x01
 NUM_LED  = 0x02
 CAP_LED  = 0x04
+OFF = 0
 
 console_fd = os.open('/dev/console', os.O_NOCTTY)
 
-all_on = SCR_LED | NUM_LED | CAP_LED
-all_off = 0
+fcntl.ioctl(console_fd, KDSETLED, CAP_LED)
+time.sleep(1)
+fcntl.ioctl(console_fd, KDSETLED, NUM_LED)
+time.sleep(1)
+fcntl.ioctl(console_fd, KDSETLED, SCR_LED)
+time.sleep(1)
+fcntl.ioctl(console_fd, KDSETLED, CAP_LED + NUM_LED)
+time.sleep(1)
+fcntl.ioctl(console_fd, KDSETLED, OFF)
 
-while 1:
-    fcntl.ioctl(console_fd, KDSETLED, all_on)
-    time.sleep(1)
-    fcntl.ioctl(console_fd, KDSETLED, all_off)
-    time.sleep(1)

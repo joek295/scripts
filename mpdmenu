@@ -1,5 +1,8 @@
 #!/bin/bash
-# largely taken from: https://github.com/k00mi/mpdmenu 
+# based on the mpdmenu script found at:
+# https://github.com/k00mi/mpdmenu 
+# maintained by Joe Kitchen at:
+# https://github.com/joek295/scripts
 
 MPC="mpc --quiet -p ${1:-6600}"
 
@@ -72,15 +75,15 @@ randtoggle() {
   }
 
 while true; do
-action=$(DMENU "Clear\nAdd\nRemove\nPlay\nNext\nPlay/Pause\nShuffle" "Do you want to")
+action=$(DMENU "Play/Pause\nJump\nNext\nShuffle\nClear\nAdd\nRemove\n" "Do you want to")
     case $action in
+        Play/Pause) playpause;;
+        Jump) jump;;
+        Next) next;;
+        Shuffle) randtoggle;;
         Clear) $MPC clear;;
         Add) add;;
         Remove) remove;;
-        Play) jump;;
-        Next) next;;
-        Play/Pause) playpause;;
-        Shuffle) random;;
         "") exit 0;;
     esac
 done

@@ -1,6 +1,15 @@
 #!/bin/bash
+# sets wallpaper at random to one in the defined directory
 
 DIR=$HOME/images/desktops
-SET_COMMAND="hsetroot -full"
+SET="hsetroot -full"
 
-find $DIR -type f -print | shuf -n 1 | xargs $SET_COMMAND
+if [ $1 ]; then
+  if [ -d "$1" ]; then
+    DIR=$1
+  else
+    echo $1 "is not a directory"
+  fi
+fi
+
+find $DIR -type f -print | shuf -n 1 | xargs $SET
