@@ -1,46 +1,31 @@
-#! /bin/bash
+#! /bin/sh
 
-WORDLIST=$HOME/documents/misc/scrabble_wordlist
+WORDLIST=/usr/share/dict/words
+# this should be on most Unix systems. It is not, however, the
+# complete scrabble word list; if you have a better word list
+# available on your system, you should prefer that.
 SEARCH='grep -w'
 
 check ()
 {
-  if [[ $# -lt 1 ]]; then
-    echo "please enter a search term to check against the scrabble dictionary"
-    exit 1
-  fi
-  # a neat trick from the Useless Use of Cat awards page
-  # we are running grep here for its exit code;
-  # if there is a match it will return exit 0 and the if loop will succeed
-  # otherwise it will return exit 1 and the loop will fail
-  # redirection is to /dev/null so as not to pollute stdout
-  if grep -w $1 $WORDLIST > /dev/null; then
-    echo "Valid play"
+  # a neat trick from the Useless Use of Cat awards page.  we are
+  # running grep here for its exit code.  if there is a match it will
+  # return exit 0 and the if loop will succeed.  otherwise it will
+  # return exit 1 and the loop will fail.  redirection is to /dev/null
+  # so as not to pollute stdout.
+  if $SEARCH $1 $WORDLIST > /dev/null; then
+    echo "VALID"
+    $SEARCH $1 $WORDLIST
     exit 0
   fi
-  echo "Invalid play"
+  echo "INVALID"
   exit 0
 }
 
-if [[ $# -lt 1 ]]; then
-  echo "Use 'allowed [REGEXP]' to search the scrabble dictionary for matches"
-  echo "Or 'allowed -c WORD' to check if a word is in the dictionary"
-  echo "'allowed --sides WORD' will show you all the words containing WORD"
-  exit 1
+if [ $# -lt 1 ]; then
+    echo "Error: Not enough arguments."
+    echo "Please enter a word to check."
+    exit 1
 fi
 
-if [[ $1 == "-c" ]]; then
-  check $2
-else
-  if [[ $1 == "--check" ]]; then
-    check $2
-  fi
-fi
-
-if [[ $2 == "--sides" ]]; then
-  SEARCH='grep'
-fi
-
-# standard usage is to grep the pattern following `allowed` in my copy of the 
-# scrabble dictionary
-$SEARCH $1 $WORDLIST
+check $1

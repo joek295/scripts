@@ -12,8 +12,8 @@
 # change " and ' at the beginning of quotations to `` and ` respectively
 
 AUTHORNAME='JKitchen'
-STARTDATA=$HOME/scripts/latexstart
-ENDDATA=$HOME/scripts/latexend
+STARTDATA='\begin{document}'
+ENDDATA='\end{document}'
 TEMPFILE=$HOME/tmp
 
 # catch invalid syntax

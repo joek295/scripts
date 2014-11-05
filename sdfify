@@ -11,11 +11,11 @@ if [ -f $1 ] ; then
     exit 0
   else
     if grep '#!/usr/pkg/bin/bash' $1; then
-      echo "Already SDF-ified"
+      echo "File is already compatible with the SDF."
       exit 0
     fi
   fi
 else
-  echo $1 "not a valid filename"
+  echo $1 ": not a valid file name"
   exit 1
 fi
