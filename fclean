@@ -1,12 +1,18 @@
 #!/bin/bash
-# obtained from paramthegreat @ Arch forums
-# replaces spaces with underscores
-# removes unwanted characters
-# makes everything lowercase
-# replaces hyphen after numbers with underscore
+
+# Clean up a file-name.
+
+# Originally by paramthegreat on the Arch fora.
+
+# Replaces spaces with underscores.
+# Removes unwanted characters.
+# Makes everything lowercase.
+# Replaces hyphens after numbers with underscores.
 
 ls | while read -r FILE
-do
-    mv -v -- "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]?*|' | tr -d "\'" | tr '[A-Z]' '[a-z]' | sed 's/\([0-9][0-9]\)-/\1_/'`
-done
+
+     do
+         mv -v -- "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]?*|' | tr -d "\'" | tr '[A-Z]' '[a-z]' | sed 's/\([0-9][0-9]\)-/\1_/'`
+     done
+
 exit 0

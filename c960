@@ -1,5 +1,6 @@
 #! /usr/bin/env python
-# fischerandom setup modeller
+
+# Create a starting position for Fischerrandom Chess.
 
 import random
 
@@ -8,7 +9,6 @@ white_squares = ["b", "d", "f", "h"]
 
 bb_start = random.choice(black_squares)
 bw_start = random.choice(white_squares)
-# ValueError: list.remove(x): x not in list
 black_squares.remove(bb_start)
 white_squares.remove(bw_start)
 squares = black_squares + white_squares

@@ -12,7 +12,6 @@
 
 # Ability to handle more than one file
 
-
 if [ $# -lt 1 ]; then
     echo "cloc requires files to work on"
     exit 1
@@ -23,3 +22,5 @@ echo -n "Total lines:"; wc -l $1 | cut -d " " -f 1
 echo -n "Non-blank lines:"; grep -c -v ^$ $1
 
 echo -n "Code lines:"; grep -c -v "[ \t]*#" $1
+
+exit 0

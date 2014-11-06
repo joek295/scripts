@@ -1,4 +1,7 @@
 #! /bin/sh
+
 # check to see how many packages are to be upgraded.
 
 apt-get -u -s upgrade | grep '[0-9] upgraded' | cut -f 1 -d u
+
+exit 0

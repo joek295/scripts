@@ -3,22 +3,19 @@
 import os
 from subprocess import Popen, PIPE, STDOUT
 
-# dmenu constants
 DMENU_CACHE = os.path.expanduser('~/.dmenu_cache')
 DMENU_COMMAND = [
-            'dmenu', 
-            '-nb', '#000000',
-            '-nf', '#9999CC',
-        ]
+    'dmenu',
+    '-nb', '#000000',
+    '-nf', '#9999CC',
+]
 
 # our custom commands
 commands = {
-# a comma separated list of commands in the form
-# 'command': 'full command'
-'xinit': 'gvim ~/.xinitrc', 'ob-configure': 'gvim ~/.config/openbox/rc.xml', 'dmenu-configure': 'gvim ~/scripts/dmenu_customise', 'vim-configure': 'gvim ~/.vim/vimrc'
-#'script': '@script'
-#'fvwm-configure': 'gvim ~/fvwm/config', 'scrotwm-configure': 'gvim ~/.scrotwm.conf'
-    }
+    # a comma separated list of commands in the form
+    # 'command': 'full command'
+    'nethack': 'urxvt -e nethack'
+}
 # check if local cache exists
 if not os.path.exists(DMENU_CACHE):
     os.system('dmenu_path > /dev/null')

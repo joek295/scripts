@@ -1,15 +1,35 @@
 #!/bin/bash
-# A replacement for fclean and fclean_dir
-# searches recursively through directory for files with un-unixy names, and makes them cleaner
-# replaces capitals with lowercase
-# replaces spaces with underscores
-# removes any characters not in the sets [a-z] [0-9] _ .
-# leaves a log file, detailing the name changes
-# NOTE: Be careful when using this on your home directory, as it may change the names of configuration files
-# For instance, .Xauthority and .Xresources would be renamed
 
-# written and maintained by Joe Kitchen at:
-# https://github.com/scripts
+# Sanitize filenames in a directory.
 
-find . -depth -name "*[A-Z ]*" -exec rename -v 'tr/[A-Z][ ]/[a-z][_]/' '{}' > .cleaner.log \; 
-find . -depth -name "*[\!\?\,\[\]\{\}\(\)\'\"]*" -exec rename -v 's/[^\w\.\/]//g' '{}' > .cleaner.log \;
+# A replacement for fclean and fclean_dir.  Searches recursively
+# through directory for files with un-unixy names, and makes them
+# cleaner.
+
+# REPLACES:
+
+# capitals with lowercase.
+# spaces with underscores.
+
+# REMOVES:
+
+# Any non-word characters [A-Za-z0-9_-]
+
+# Leaves a log file, detailing the name changes
+
+# WARNING: Be careful when using this on your home directory.  Cleaner
+# may change the names of configuration files without asking
+# permission.  For instance, .Xauthority and .Xresources would be
+# renamed.
+
+downcase () {
+    find . -depth -name "*[A-Z ]*" -exec rename -v 'tr/[A-Z][ ]/[a-z][_]/' '{}' > .cleaner.log \;
+}
+
+unpunctuate () {
+    find . -depth -name "*[\!\?\,\[\]\{\}\(\)\'\"]*" -exec rename -v 's/[^\w\.\/]//g' '{}' > .cleaner.log \;
+}
+
+downcase && unpunctuate
+
+exit 0

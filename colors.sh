@@ -1,14 +1,18 @@
 #!/bin/sh
-# <esc>[..m sequences set color
 
-# first we must check whether we are using dash or bash as sh as they
-# treat echo differently
-# bash requires the flag -e for escapes, while dash assumes that \ is used
-# as an escape by default
+# Show terminal colors.
 
-# note that this assumes that all non-dash shells behave like bash.
-# this *should* be true, because bash's behaviour is POSIXly correct
-# however, it may not be, in which case this script may break
+# From LinuxBBQ
+
+# <esc>[..m sequences set colour.
+
+# First we must check whether we are using dash or bash as sh as they
+# treat echo differently.  Bash requires the flag -e for escapes,
+# while dash assumes that \ is used as an escape by default.
+
+# Note that this assumes that all non-dash shells behave like bash.
+# This *should* be true, because bash's behaviour is POSIXly correct.
+# However, it may not be, in which case this script may break.
 
 SH=`readlink /bin/sh`
 if [ $SH = "dash" ]; then

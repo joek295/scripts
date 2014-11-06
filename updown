@@ -1,6 +1,0 @@
-#! /bin/sh
-if [ ifconfig eth0 | grep UP ]; then
-  sudo ifconfig eth0 down
-else
-  sudo ifconfig eth0 up
-fi

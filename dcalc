@@ -1,8 +1,11 @@
 #!/bin/bash
+
 DMENU="dmenu -i"
+
 if [[ -f "$HOME/.dmenurc" ]]; then
   . $HOME/.dmenurc
 fi
+
 DMENU="$DMENU -l 10"
 
 pystr="from math import *; print"
@@ -25,4 +28,5 @@ while true; do
       ;;
   esac
 done
+
 echo "$pystr $prev" | python 2>/dev/null | xsel -i

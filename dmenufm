@@ -1,14 +1,18 @@
 #!/bin/sh
-# A fuzzy file-finder and opener based on dmenu
-# Requires: dmenu, exo-open
-# maintained by Joe Kitchen at:
-# https://github.com/scripts
+
+# Fuzzy-find and intelligently open files.
+
+# Requires: dmenu, xdg-open (or equivalent)
 
 _PATH=$HOME
 DMENU_OPTS="-i -l 20 -nb #2e3436 -nf #9999CC"
 USER="id -un"
-FILES=$( find $_PATH | sed -e "s/\/home\/joe//g" | dmenu $DMENU_OPTS )
+OPEN=xdg-open
+
+FILES=$( find $_PATH | sed -e "s:/home/`$USER`/::g" | dmenu $DMENU_OPTS )
 
 if [ $? -eq 0 ] ; then
-  xdg-open "$_PATH/$FILES"
+    $OPEN "$_PATH/$FILES"
 fi
+
+exit 0

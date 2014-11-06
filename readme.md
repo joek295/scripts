@@ -1,25 +1,72 @@
-Miscellaneous scripts, mostly written in bash.
+= Introduction =
 
-Some python and perl.
+This repository contains the scripts kept in my ~/scripts/ folder,
+which is part of my $PATH. They are mostly written in bash, though
+there is some python and at least one perl script.
 
-The most useful of these:
-* @script - creates a file as an executable and opens it for editing in your favourite editor
-* allowed - tells you if a word is a valid scrabble move. 
-* anagram - takes an input word and returns English single-word anagrams.
-* asciitex - takes a plaintext file and formats it as a latex file.
-* dmenufm - a fuzzy file-finder using dmenu
-* mpdmenu - uses dmenu to control mpd
-* fran - performs a Frequency Analysis on a textfile
-* mdcheck - checks whether a file has a given md5sum
-* some - less, with syntax highlighting
-* stats - takes a file full of data and performs some statistical analyses
-* wallpaper - a script to set a random wallpaper using hsetroot
+Some of these are useful little utilities for a variety of
+things. Others are merely toys.
 
-Probably of no interest to anyone other than me:
-* browser - possibly the least featureful browser I have ever seen
-* teatimer - a script to tell you when your tea is ready
-* touchpad_toggle - toggles whether a touchpad is on or off
+= Useful: =
+
+In alphabetical order:
+
+* allowed: returns whether a given string is a word in a
+           wordlist. Originally written for Scrabble.
+
+* anagram: returns all single-word anagrams in English of a string.
+
+* cleaner: cleans up directories so that files have names in a
+  standardised format.
+
+* cloc.sh: counts the number of lines of code in a file.
+
+* colours.sh and colors.sh: two different scripts outputting terminal
+  colours. colors.sh is sh compatible, colours.sh isn't.
+
+* fran: a frequency analysis tool.
+
+* mdcheck: checks to see whether the md5sum of a given file matches a string.
+
+* touchpad_toggle: toggles a laptop touchpad on and off.
+
+* wallpaper: sets a random wallpaper from the images in a given
+  directory.
+
+== Dmenu: ==
+
+Dmenu is one of my favourite pieces of software, and I have a number
+of scripts which work with it:
+
+* dcalc: a calculator in dmenu.
+
+* dmenfm: a file manager for dmenu.
+
+* dmenu_customise: dmenu + user-defined commands.
+
+* dmenufm: a fuzzy-file finder and intelligent opener for dmenu.
+
+* mpdmenu: a dmenu-driven interface for mpd.
+
+* rhythmenu: controls rhythmbox from dmenu.  I no longer use
+  rhythmbox, so I can't vouch for it's continuing to work.
+
+= Toys =
+
+* browser: an almost entirely featureless web browser.
+
+* c960: a script to randomise chess starting positions according to
+  Fischerrandom Chess rules.  Would be useful if only anyone *played*
+  Fischerrandom Chess.
+
+* leds: playing with keyboard LEDs.  Requires root.
+
+* pipes: a terminal version of the classic Windows pipes screensaver.
+
+
+
 
 Scripts taken off of the internet are where possible credited.
 
-All uncredited scripts are (probably) my own, and are free for use, re-distribution, and modification without any restrictions.
+All uncredited scripts are (probably) my own, and are free for use,
+re-distribution, and modification without any restrictions.

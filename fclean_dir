@@ -1,16 +1,19 @@
 #!/bin/bash
-# obtained from rhowadlt on #! fora
+
+# Fclean files in subfolders of working directory.
+
+# Originally by rhowdalt on the #! fora.
 
 traverse() {
-   local d startdir
-   cd -- "$1" || exit 1 
-   if [[ $(find -type d -empty) != "." ]]; then
-      for d in *; do
-         [ -d "$d" ] && traverse "$d"
-         fclean
-      done
-   fi
-   cd .. || exit 1
+    local d startdir
+    cd -- "$1" || exit 1
+    if [[ $(find -type d -empty) != "." ]]; then
+        for d in *; do
+            [ -d "$d" ] && traverse "$d"
+            fclean
+        done
+    fi
+    cd .. || exit 1
 }
 
 traverse .

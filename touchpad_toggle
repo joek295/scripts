@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+
+# Toggle laptop touchpads on and off.
 
 #find value of $PAD with 'xinput list'
 PAD='SynPS/2 Synaptics TouchPad'

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Manage files using dmenu.
+
 about="
 ### Dmen File Manager #############################################
 # Version 0.1.2 by Scott Garrett <wintervenom [(a)] archlinux.us> #
@@ -28,7 +30,7 @@ function defaults {
     dmenu_fg='#9999CC'
     dmenu_sbg='#000066'
     dmenu_sfg='#FFFFFF'
-    executor='exo-open'
+    executor='xdg-open'
     editor='gvim'
     filemanager='pcmanfm'
 }
@@ -104,7 +106,7 @@ while [ "$file" ]; do
                             xmessage 'No executor found.  Set one in [Preferences].'
                         fi
                     fi
-                ;;
+                    ;;
                 'Edit')
                     if [ "$editor" ] && which "$editor" &> /dev/null; then
                         exec "$editor" "$owd/$file" &
@@ -121,7 +123,7 @@ while [ "$file" ]; do
                     else
                         xmessage 'No editor found.  Set one in [Preferences].'
                     fi
-                ;;
+                    ;;
                 'Copy')
                     cdir=1
                     while [ "$cdir" ]; do
@@ -138,7 +140,7 @@ while [ "$file" ]; do
                             fi
                         fi
                     done
-                ;;
+                    ;;
                 'Move')
                     cdir=1
                     while [ "$cdir" ]; do
@@ -155,15 +157,15 @@ while [ "$file" ]; do
                             fi
                         fi
                     done
-                ;;
+                    ;;
                 'Rename')
                     opt=$(echo "" | $menu -p "Rename <$file> to:")
                     [ "$opt" ] && mv -f "$file" "$opt"
-                ;;
+                    ;;
                 'Delete')
                     opt=$(echo -e "No\nYes" | $menu -p "Really delete <$file>?")
                     [[ "$opt" == "Yes" ]] && rm -rf "$file"
-                ;;
+                    ;;
                 *) [ "$opt" ] && [ -e "$plugins_dir/operations/$opt" ] && source "$plugins_dir/operations/$opt" ;;
             esac
         elif [[ "$file" =~ '[Open in' ]]; then
@@ -201,48 +203,48 @@ About"; ls -B "$plugins_dir/preferences") | $menu -p "Preferences")
                         [[ "$opt" == '[Default]' ]] && opt='000000'
                         [ "$opt" ] && dmenu_bg="$opt"
                         dmenu_test=1
-                    ;;
+                        ;;
                     *'Foreground')
                         opt=$(echo -e "$dmenu_fg\n[Default]" | $menu -p "Foreground:")
                         [[ "$opt" == '[Default]' ]] && opt='9999CC'
                         [ "$opt" ] && dmenu_fg="$opt"
                         dmenu_test=1
-                    ;;
+                        ;;
                     *'Selected background')
                         opt=$(echo -e "$dmenu_bg\n[Default]" | $menu -p "Selected background:")
                         [[ "$opt" == '[Default]' ]] && opt='000066'
                         [ "$opt" ] && dmenu_sbg="$opt"
                         dmenu_test=1
-                    ;;
+                        ;;
                     *'Selected foreground')
                         opt=$(echo -e "$dmenu_bg\n[Default]" | $menu -p "Selected foreground:")
                         [[ "$opt" == '[Default]' ]] && opt='FFFFFF'
                         [ "$opt" ] && dmenu_sfg="$opt"
                         dmenu_test=1
-                    ;;
+                        ;;
                     *'Executor')
                         opt=$(echo -e "$executor\n[Default]" | $menu -p "Executor:")
                         [[ "$opt" == '[Default]' ]] && opt='exo'
                         [ "$opt" ] && editor="$opt"
-                    ;;
+                        ;;
                     *'Editor')
                         opt=$(echo -e "$editor\n[Default]" | $menu -p "Editor:")
                         [[ "$opt" == '[Default]' ]] && opt='geany'
                         [ "$opt" ] && editor="$opt"
-                    ;;
+                        ;;
                     *'File manager')
                         opt=$(echo -e "$filemanager\n[Default]" | $menu -p "File manager:")
                         [[ "$opt" == '[Default]' ]] && opt='thunar'
                         [ "$opt" ] && filemanager="$opt"
-                    ;;
+                        ;;
                     *'defaults')
                         opt=$(echo -e "No\nYes" | $menu -p "Really set defaults?")
                         [[ "$opt" == "Yes" ]] && defaults
-                    ;;
+                        ;;
                     'About') xmessage -maxWidth 80 -maxHeight 80 "$about" ;;
                     *)
                         [ "$opt" ] && [ -e "$plugins_dir/preferences/$opt" ] && source "$plugins_dir/preferences/$opt"
-                    ;;
+                        ;;
                 esac
             done
             menu="$menu $([ "$dmenu_caseinsens" == '1' ] && echo '-i') $([ "$dmenu_onbottom" == '1' ] && echo '-b') -nb $dmenu_bg -nf $dmenu_fg -sb $dmenu_sbg -sf $dmenu_sfg"
