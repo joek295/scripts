@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# Check to see whether a word is in a given word list.
+
 WORDLIST=/usr/share/dict/words
 # this should be on most Unix systems. It is not, however, the
 # complete scrabble word list; if you have a better word list
@@ -8,18 +10,15 @@ SEARCH='grep -w'
 
 check ()
 {
-  # a neat trick from the Useless Use of Cat awards page.  we are
-  # running grep here for its exit code.  if there is a match it will
-  # return exit 0 and the if loop will succeed.  otherwise it will
-  # return exit 1 and the loop will fail.  redirection is to /dev/null
-  # so as not to pollute stdout.
-  if $SEARCH $1 $WORDLIST > /dev/null; then
-    echo "VALID"
-    $SEARCH $1 $WORDLIST
-    exit 0
-  fi
-  echo "INVALID"
-  exit 0
+    # a neat trick from the Useless Use of Cat awards page.  we are
+    # running grep here for its exit code.  if there is a match it will
+    # return exit 0 and the if loop will succeed.  otherwise it will
+    # return exit 1 and the loop will fail.  redirection is to /dev/null
+    # so as not to pollute stdout.
+    if $SEARCH $1 $WORDLIST > /dev/null; then
+        echo "VALID"
+    fi
+    echo "INVALID"
 }
 
 if [ $# -lt 1 ]; then
@@ -29,3 +28,5 @@ if [ $# -lt 1 ]; then
 fi
 
 check $1
+
+exit 0

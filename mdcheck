@@ -1,34 +1,28 @@
 #!/bin/bash
-# from milo64 in the arch fora
-# checks if md5 of a file matches an md5 you give it
 
-if [ "$1" = "" ]; then
-  echo "ERR: Missing command-line parameter."
-  echo " "
-  echo "Syntax:"
-  echo "  mdcheck FILE ACTUAL-MD5"
-  exit 1
-fi
+# Check if a file's md5sum matches a string.
 
-if [ "$2" = "" ]; then
-  echo "ERR: Missing command-line parameter."
-  echo " "
-  echo "Syntax:"
-  echo "  mdcheck FILE ACTUAL-MD5"
-  exit 1
+# Usage: mdcheck $filename $md5string
+
+# Based on a script by milo64 from the Arch Fora.
+
+check () {
+    if [ "$(md5sum $1 | cut -d ' ' -f 1)" = "$2" ]; then
+        echo "Checksum matched."
+        exit 0
+    else
+        echo "Checksum not matched."
+        exit 1
+    fi
+}
+
+if [ $# -ne 2 ]; then
+    echo "ERROR: mdcheck requires two arguments."
 fi
 
 if [ -a "$1" ]; then
-  echo 123 > /dev/null
+    check $1 $2
 else
-  echo "ERR: '$1' No such file."
-  exit 1;
-fi
-
-if [ "$(md5sum $1 | awk '{print $1}')" = "$2" ]; then
-  echo "Checksum matched."
-  exit 0
-else
-  echo "Checksum not matched."
-  exit 1
+    echo "ERR: '$1' No such file."
+    exit 1;
 fi

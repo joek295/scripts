@@ -1,11 +1,13 @@
 #! /bin/sh
-# frequency analysis tool
+
+# Frequency analyse a text file.
 
 TEMPFILE=$HOME/tmp
 
-if [ $# -lt 1 ]; then
-    echo "Use 'fran <filename>'."
-    exit
+if [ $# -ne 1 ]; then
+    echo "Error: wrong number of arguments"
+    echo "Syntax: `fran $filename`"
+    exit 1
 fi
 
 if [ $1 ]; then
@@ -20,3 +22,5 @@ fi
 sed 's/./&\n/g' $TEMPFILE | sort | uniq -c | sort -nr
 
 rm $TEMPFILE
+
+exit 0
