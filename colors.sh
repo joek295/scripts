@@ -38,3 +38,5 @@ $ECHO "          \033[40;5m black \033[41;5m red \033[42;5m green \033[43;5m yel
 
 $ECHO "REVERSE   \033[30;7m black \033[31;7m red \033[32;7m green \033[33;7m yellow \033[34;7m blue \033[35;7m purple \033[36;7m cyan \033[37;7m white \033[0m\n"
 $ECHO "          \033[40;7m black \033[41;7m red \033[42;7m green \033[43;7m yellow \033[44;7m blue \033[45;7m purple \033[46;7m cyan \033[47;7m white \033[0m"
+
+exit 0

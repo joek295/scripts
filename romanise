@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+# take a decimal number and output the Roman Numerals for that number.
+
 import sys
 
 arabic = int(sys.argv[1])

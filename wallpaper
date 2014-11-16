@@ -5,13 +5,17 @@
 DIR=$HOME/images/desktops
 SET="hsetroot -full"
 
-if [ $1 ]; then
-    if [ -d "$1" ]; then
-        DIR=$1
-    else
-        echo $1 "is not a directory"
-        echo "Continuing with ", $DIR
-    fi
+if [ $# -ne $1 ]; then
+    echo "ERROR: Wrong number of arguments."
+    echo "Usage: `wallpaper $directory`"
+    exit 1
+fi
+
+if [ -d "$1" ]; then
+    DIR=$1
+else
+    echo "WARNING: " $1 " is not a directory"
+    echo "Continuing with " $DIR
 fi
 
 find $DIR -type f -print | shuf -n 1 | xargs $SET

@@ -16,9 +16,12 @@ check ()
     # return exit 1 and the loop will fail.  redirection is to /dev/null
     # so as not to pollute stdout.
     if $SEARCH $1 $WORDLIST > /dev/null; then
-        echo "VALID"
+        # colour 'VALID' green
+        echo "\033[32;1mVALID"
+    else
+        # colour 'INVALID' red
+        echo "\033[31;1mINVALID"
     fi
-    echo "INVALID"
 }
 
 if [ $# -lt 1 ]; then

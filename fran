@@ -10,13 +10,11 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-if [ $1 ]; then
-    if [ ! -f "$1" ]; then
-        echo "Filename does not exist."
-        exit
-    else
-        cat $1 > $TEMPFILE
-    fi
+if [ ! -f "$1" ]; then
+    echo "Filename does not exist."
+    exit 1
+else
+    cat $1 > $TEMPFILE
 fi
 
 sed 's/./&\n/g' $TEMPFILE | sort | uniq -c | sort -nr

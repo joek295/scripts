@@ -10,17 +10,28 @@
 # Smart comment-syntax detection based upon extension, `file` output,
 # and/or #!
 
-# Ability to handle more than one file
+cloc () {
+    echo $file:
+
+    echo -n "Total: "; wc -l $file | cut -d " " -f 1
+
+    echo -n "Non-blank: "; grep -c -v ^$ $file
+
+    echo -n "Code: "; grep -c "^[ \t]*[^# \t]" $file; echo ""
+}
 
 if [ $# -lt 1 ]; then
-    echo "cloc requires files to work on"
+    echo "Error: cloc requires files to work on"
     exit 1
 fi
 
-echo -n "Total lines:"; wc -l $1 | cut -d " " -f 1
-
-echo -n "Non-blank lines:"; grep -c -v ^$ $1
-
-echo -n "Code lines:"; grep -c -v "[ \t]*#" $1
+for file in "$@"
+do
+    if [ -f $file ]; then
+        cloc
+    else
+        echo "\033[31;1mError: \033[0mfile\033[37;1m" $file "\033[0mdoes not exist."
+    fi
+done
 
 exit 0

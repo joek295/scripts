@@ -4,8 +4,6 @@
 # In the event that you wish to secure data properly, please use RSA, PGP, or another encryption standard.
 # The cryptograms in this module are toys, and are not a replacement for proper data security.
 
-# 
-
 import sys
 
 text = open(sys.argv[1])
@@ -35,4 +33,3 @@ def railfence(string):
     print plaintext[i]
   for j in range (1, a, 2):
     print plaintext[j]
-    
