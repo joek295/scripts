@@ -1,7 +1,9 @@
 #!/bin/sh
 
-# sh compatible version of djp's dmenu-calculator script from the Arch
-# Forums.
+# calculator based on bc and dmenu
+
+# Based on djp's script on the Arch forums.  Made sh compatible, and
+# uses bc instead of python for greater power.
 
 if [ -f "$HOME/.dmenurc" ]; then
     . $HOME/.dmenurc
@@ -9,10 +11,8 @@ else
     DMENU="dmenu -i"
 fi
 
-pystr="from math import *; print"
-
 hist="$(xsel -o)"
-(echo "$pystr $hist" | python 2>/dev/null) || hist=False
+(echo "$hist" | bc -l 2>/dev/null) || hist=False
 
 calc=$(echo $hist | $DMENU -p Calculate:)
 prev="$calc"
@@ -24,10 +24,10 @@ while true; do
         *)
             prev="$calc"
             hist="$prev\n$hist"
-            calc=$(echo "$pystr $calc; print \"\n$hist\"" | python 2>/dev/null\
+            calc=$(echo "$calc; print \"\n$hist\"" | bc -l 2>/dev/null\
                           | $DMENU -p "Calculate:")
             ;;
     esac
 done
 
-echo "$pystr $prev" | python 2>/dev/null | xsel -i
+echo "$prev" | bc -l 2>/dev/null | xsel -i

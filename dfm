@@ -5,11 +5,16 @@
 # Requires: dmenu, xdg-open (or equivalent)
 
 _PATH=$HOME
-DMENU_OPTS="-i -l 20 -nb #2e3436 -nf #9999CC"
 USER="id -un"
 OPEN=xdg-open
 
-FILES=$( find $_PATH | sed -e "s:/home/`$USER`/::g" | dmenu $DMENU_OPTS )
+if [ -f $HOME/.dmenurc ]; then
+    . $HOME/.dmenurc
+else
+    DMENU="dmenu -i"
+fi
+
+FILES=$( find $_PATH | sed -e "s:/home/`$USER`/::g" | $DMENU )
 
 if [ $? -eq 0 ] ; then
     $OPEN "$_PATH/$FILES"

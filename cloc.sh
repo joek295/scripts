@@ -10,6 +10,12 @@
 # Smart comment-syntax detection based upon extension, `file` output,
 # and/or #!
 
+# Define color variables: this should make the script much more
+# readable than using inline escapes.
+Color_Off='\033[0m'    # Text Reset
+ERROR='\033[1;31m'     # Red
+EMPH='\033[1;37m'      # White
+
 cloc () {
     echo $file:
 
@@ -21,7 +27,7 @@ cloc () {
 }
 
 if [ $# -lt 1 ]; then
-    echo "Error: cloc requires files to work on"
+    echo "${ERROR}Error${Color_Off}: cloc requires files to work on"
     exit 1
 fi
 
@@ -30,7 +36,7 @@ do
     if [ -f $file ]; then
         cloc
     else
-        echo "\033[31;1mError: \033[0mfile\033[37;1m" $file "\033[0mdoes not exist."
+        echo "\${ERROR}Error\${Color_Off}: file\${EMPH}" $file "\${Color_Off}does not exist."
     fi
 done
 
