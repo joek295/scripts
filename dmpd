@@ -15,8 +15,11 @@ DMENU() {
     echo -e "$1" | dmenu -i -b -p "$2" ${3:+"-l" "$3"}
 }
 
+# Show name and title together: all of my tracks have one but not the
+# other, and there isn't any consistency.  One of these days I shall
+# sit down and fix this.  My conkyrc uses the same kludge.
 get_playlist() {
-    $MPC -f "%position% - %artist% - %album% - %title%" playlist
+    $MPC -f "%position% - %artist% - %album% - %name%%title%" playlist
 }
 
 select_from() {
@@ -75,6 +78,8 @@ randtoggle() {
     $MPC random
 }
 
+# if shuffle is on, the command "shuffle off" should be available;
+# otherwise the command "shuffle on" instead
 if mpc | grep "random: on" >/dev/null; then
     SHUFFLE="Shuffle off"
 else
@@ -83,7 +88,7 @@ fi
 
 
 while true; do
-    action=$(DMENU "Play/Pause\nJump\nNext\n$SHUFFLE\nClear\nAdd\nRemove\n" "Do you want to")
+    action=$(DMENU "Play/Pause\nJump\nNext\n$SHUFFLE\nClear\nAdd\nRemove\n")
     case $action in
         Play/Pause) playpause;;
         Jump) jump;;
