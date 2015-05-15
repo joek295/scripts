@@ -66,10 +66,6 @@ jump() {
     [ -n "$song" ] && $MPC play "${song%%\ *}"
 }
 
-next() {
-    $MPC next
-}
-
 playpause() {
     $MPC toggle
 }
@@ -81,22 +77,28 @@ randtoggle() {
 # if shuffle is on, the command "shuffle off" should be available;
 # otherwise the command "shuffle on" instead
 if mpc | grep "random: on" >/dev/null; then
-    SHUFFLE="Shuffle off"
+    SHUFFLE="Shuffle OFF"
 else
-    SHUFFLE="Shuffle on"
+    SHUFFLE="Shuffle ON"
 fi
 
+# if playing, show "pause"; else show "play"
+if mpc | grep "playing" >/dev/null; then
+    PLAY="Pause"
+else
+    PLAY="Play"
+fi
 
 while true; do
-    action=$(DMENU "Play/Pause\nJump\nNext\n$SHUFFLE\nClear\nAdd\nRemove\n")
+    action=$(DMENU "$PLAY\nJump\nNext\n$SHUFFLE\nClear\nAdd\nRemove\n")
     case $action in
-        Play/Pause) playpause;;
-        Jump) jump;;
-        Next) next;;
-        Shuffle) randtoggle;;
-        Clear) $MPC clear;;
-        Add) add;;
-        Remove) remove;;
-        "") exit 0;;
+        Jump     ) jump;;
+        $PLAY    ) playpause;;
+        Next     ) $MPC next;;
+        $SHUFFLE ) randtoggle;;
+        Clear    ) $MPC clear;;
+        Add      ) add;;
+        Remove   ) remove;;
+        ""       ) exit 0;;
     esac
 done
