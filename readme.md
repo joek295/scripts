@@ -1,4 +1,4 @@
-= Introduction =
+# Introduction
 
 This repository contains the scripts kept in my ~/scripts/ folder,
 which is part of my $PATH. They are mostly written in bash, though
@@ -7,7 +7,7 @@ there is some python and at least one perl script.
 Some of these are useful little utilities for a variety of
 things. Others are merely toys.
 
-= Useful: =
+## Useful: 
 
 In alphabetical order:
 
@@ -33,7 +33,7 @@ In alphabetical order:
 * wallpaper: sets a random wallpaper from the images in a given
   directory.
 
-== Dmenu: ==
+## Dmenu:
 
 Dmenu is one of my favourite pieces of software.  It is a menu for X
 which efficiently manages large numbers of user-defined menu items.  I
@@ -56,7 +56,7 @@ have a number of scripts which work with it, which are stored in scripts/dmenu/:
 * rhythmenu: controls rhythmbox from dmenu.  I no longer use
   rhythmbox, so I can't vouch for it's continuing to work.
 
-= Toys =
+## Toys:
 
 * browser: an almost entirely featureless web browser.
 
@@ -71,9 +71,6 @@ have a number of scripts which work with it, which are stored in scripts/dmenu/:
   might break on tty.  
 
 * pipes: a terminal version of the classic Windows pipes screensaver.
-
-
-
 
 Scripts taken off of the internet are where possible credited.
 
