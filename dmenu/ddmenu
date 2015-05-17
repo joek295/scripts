@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# ddmenu is a menu of all dmenu scripts
+
+COMMANDS=""
+DIR=~/scripts/dmenu
+
+cd $DIR
+for i in *; do
+    COMMANDS="$COMMANDS\n$i"
+done
+
+command=$(echo $COMMANDS | dmenu -i)
+[ "$command" = "" ] && exit 1
+$command && exit 0

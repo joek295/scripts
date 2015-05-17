@@ -6,7 +6,7 @@ from subprocess import Popen, PIPE, STDOUT
 DMENU_CACHE = os.path.expanduser('~/.dmenu_cache')
 DMENU_COMMAND = [
     'dmenu',
-    '-nb', '#000000',
+    '-nb', '#2e3436',
     '-nf', '#9999CC',
 ]
 

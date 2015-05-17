@@ -12,10 +12,13 @@ else
 fi
 
 hist="$(xsel -o)"
+
 (echo "$hist" | bc -l 2>/dev/null) || hist=False
 
 calc=$(echo $hist | $DMENU -p Calculate:)
+
 prev="$calc"
+
 while true; do
     case $calc in
         ""|"exit")

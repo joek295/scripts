@@ -4,7 +4,7 @@
 
 # Requires: dmenu, xdg-open (or equivalent).
 
-# Prefers: locate, though will fall back on find.
+# Suggests: locate.  Will fall back on find if locate is unavailable.
 
 _PATH=$HOME
 USER="id -un"

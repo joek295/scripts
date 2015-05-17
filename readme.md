@@ -35,10 +35,15 @@ In alphabetical order:
 
 == Dmenu: ==
 
-Dmenu is one of my favourite pieces of software, and I have a number
-of scripts which work with it:
+Dmenu is one of my favourite pieces of software.  It is a menu for X
+which efficiently manages large numbers of user-defined menu items.  I
+have a number of scripts which work with it, which are stored in scripts/dmenu/:
 
-* dcalc: a calculator in dmenu.
+* dbc: a calculator in dmenu, using bc as a backend.
+
+* dcalc: another calculator in dmenu, this time using python as the backend.
+
+* ddmenu: a menu of executables from a single folder, in this case scripts/dmenu/.
 
 * dmenfm: a file manager for dmenu.
 
@@ -60,6 +65,10 @@ of scripts which work with it:
   Fischerrandom Chess.
 
 * leds: playing with keyboard LEDs.  Requires root.
+
+* pacman/pacman2: two different scripts outputting terminal colours,
+  by printing pacman and the pacman ghosts.  unlike colors.sh, these
+  might break on tty.  
 
 * pipes: a terminal version of the classic Windows pipes screensaver.
 
