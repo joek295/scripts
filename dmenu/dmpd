@@ -52,6 +52,10 @@ add() {
     fi
 }
 
+save() {
+    $MPC save $(dmenu -b -p "Save Playlist As:")
+}
+
 remove() {
     local playlist=$(get_playlist)
     local song=$(select_from "$playlist" "song")
@@ -90,7 +94,7 @@ else
 fi
 
 while true; do
-    action=$(DMENU "$PLAY\nJump\nNext\n$SHUFFLE\nClear\nAdd\nRemove\n")
+    action=$(DMENU "$PLAY\nJump\nNext\n$SHUFFLE\nClear\nAdd\nRemove\nSave\n")
     case $action in
         Jump     ) jump;;
         $PLAY    ) playpause;;
@@ -99,6 +103,7 @@ while true; do
         Clear    ) $MPC clear;;
         Add      ) add;;
         Remove   ) remove;;
+        Save     ) save;;
         ""       ) exit 0;;
     esac
 done
