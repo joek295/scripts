@@ -2,41 +2,47 @@
 
 # Create a starting position for Fischerrandom Chess.
 
-import random
+import random, sys
 
-pawns = "pppppppp/"
-spaces = "8/8/8/8/"
-start = " w KQkq - 0 1"
-fen = ""
-pieces = ""
+output = int(sys.argv[1])
 
-squares = [1,2,3,4,5,6,7,8]
-bb_start = random.randrange(1,8,2)
-bw_start = random.randrange(2,9,2)
-squares.remove(bb_start)
-squares.remove(bw_start)
-q_start = random.choice(squares)
-squares.remove(q_start)
-n1_start = random.choice(squares)
-squares.remove(n1_start)
-n2_start = random.choice(squares)
-squares.remove(n2_start)
-bb_start = str(bb_start)+"b"
-bw_start = str(bw_start)+"b"
-n1_start = str(n1_start)+"n"
-n2_start = str(n2_start)+"n"
-q_start = str(q_start)+"q"
-r1_start = str(squares[0])+"r"
-k_start = str(squares[1])+"k"
-r2_start = str(squares[2])+"r"
+def pos_gen():
+    pawns = "pppppppp/"
+    spaces = "8/8/8/8/"
+    start = " w KQkq - 0 1"
+    fen = ""
+    pieces = ""
 
-start_positions = [bb_start, bw_start, q_start, n1_start, n2_start, k_start, r1_start, r2_start]
+    squares = [1,2,3,4,5,6,7,8]
+    bb = random.randrange(1,8,2)
+    bw = random.randrange(2,9,2)
+    squares.remove(bb)
+    squares.remove(bw)
+    q = random.choice(squares)
+    squares.remove(q)
+    n1 = random.choice(squares)
+    squares.remove(n1)
+    n2 = random.choice(squares)
+    squares.remove(n2)
+    bb = str(bb)+"b"
+    bw = str(bw)+"b"
+    n1 = str(n1)+"n"
+    n2 = str(n2)+"n"
+    q = str(q)+"q"
+    r1 = str(squares[0])+"r"
+    k = str(squares[1])+"k"
+    r2 = str(squares[2])+"r"
 
-start_positions.sort()
+    start_positions = [bb, bw, q, n1, n2, k, r1, r2]
 
-for piece in start_positions:
-    pieces += piece[-1]
+    start_positions.sort()
 
-fen = pieces + "/" + pawns + spaces + pawns.upper() + pieces.upper() + start
-    
-print fen
+    for piece in start_positions:
+        pieces += piece[-1]
+
+    fen = pieces + "/" + pawns + spaces + pawns.upper() + pieces.upper() + start
+
+    print fen
+
+for i in range(output):
+    pos_gen()
