@@ -3,11 +3,17 @@
 # Toggle laptop touchpads on and off.
 
 #find value of $PAD with 'xinput list'
-PAD='SynPS/2 Synaptics TouchPad'
-A=`xinput list-props "$PAD" | sed -n -e 's/.*Device Enabled ([0-9][0-9]*):\t\(.*\)/\1/p' `
+# PAD='SynPS/2 Synaptics TouchPad'
+# A=`xinput list-props "$PAD" | sed -n -e 's/.*Device Enabled ([0-9][0-9]*):\t\(.*\)/\1/p' `
 
-if [ $A -eq 1 ]; then
-  xinput set-int-prop "$PAD" "Device Enabled" 8 0
+# if [ $A -eq 1 ]; then
+#   xinput set-int-prop "$PAD" "Device Enabled" 8 0
+# else
+#   xinput set-int-prop "$PAD" "Device Enabled" 8 1
+# fi
+
+if [ `synclient | grep TouchpadOff | cut -d = -f 2` = 0 ]; then
+    synclient TouchpadOff=1
 else
-  xinput set-int-prop "$PAD" "Device Enabled" 8 1
+    synclient TouchpadOff=0
 fi
