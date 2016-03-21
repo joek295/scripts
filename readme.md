@@ -38,7 +38,7 @@ Others are merely toys.
 
 * wallpaper: sets a random wallpaper from the images in a given
   directory.
-
+  
 ## Dmenu:
 
 Dmenu is one of my favourite pieces of software.  It is a menu for X
@@ -60,7 +60,7 @@ have a number of scripts which work with it, which are stored in scripts/dmenu/:
 * mpdmenu: a dmenu-driven interface for mpd.
 
 * rhythmenu: controls rhythmbox from dmenu.  I no longer use
-  rhythmbox, so I can't vouch for it's continuing to work.
+  rhythmbox, so I can't vouch for its continuing to work.
 
 ## Toys:
 
@@ -74,7 +74,7 @@ have a number of scripts which work with it, which are stored in scripts/dmenu/:
 
 * pacman/pacman2: two different scripts outputting terminal colours,
   by printing pacman and the pacman ghosts.  unlike colors.sh, these
-  might break on tty.  
+  might break on tty.
 
 * pipes: a terminal version of the classic Windows pipes screensaver.
 
