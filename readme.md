@@ -28,6 +28,8 @@ Others are merely toys.
 
 * fran: a frequency analysis tool.
 
+* jcite.pl: for grabbing bibtex citation data from pdfs from jstor.
+
 * mdcheck: checks to see whether the md5sum of a given file matches a
   string.  Like `allowed`, this is a single function probably better
   off in .functions.
