@@ -4,7 +4,10 @@
 
 import random, sys
 
-output = int(sys.argv[1])
+try:
+    output = int(sys.argv[1])
+except IndexError:
+    output = 1
 
 def pos_gen():
     pawns = "pppppppp/"
