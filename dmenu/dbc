@@ -5,17 +5,17 @@
 # Based on djp's script on the Arch forums.  Made sh compatible, and
 # uses bc instead of python for greater power.
 
-if [ -f "$HOME/.dmenurc" ]; then
-    . $HOME/.dmenurc
+if [ -f "$HOME/.config/dmenurc" ]; then
+    . $HOME/.config/dmenurc
 else
-    DMENU="dmenu -i"
+	DMENU="dmenu -i -l 20"
 fi
 
 hist="$(xsel -o)"
 
 (echo "$hist" | bc -l 2>/dev/null) || hist=False
 
-calc=$(echo $hist | $DMENU -p Calculate:)
+calc=$(echo $hist | $DMENU -l 20 -p Calculate:)
 
 prev="$calc"
 
@@ -28,7 +28,7 @@ while true; do
             prev="$calc"
             hist="$prev\n$hist"
             calc=$(echo "$calc; print \"\n$hist\"" | bc -l 2>/dev/null\
-                          | $DMENU -p "Calculate:")
+                          | $DMENU -l 20 -p "Calculate:")
             ;;
     esac
 done

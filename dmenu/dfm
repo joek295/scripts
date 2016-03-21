@@ -10,8 +10,8 @@ _PATH=$HOME
 USER="id -un"
 OPEN=xdg-open
 
-if [ -f $HOME/.dmenurc ]; then
-    . $HOME/.dmenurc
+if [ -f $HOME/.config/dmenurc ]; then
+    . $HOME/.config/dmenurc
 else
     DMENU="dmenu -i"
 fi
@@ -24,7 +24,7 @@ else
     SEARCH="find $_PATH"
 fi
 
-FILES=$( $SEARCH | sed -e "s:/home/`$USER`/::g" | $DMENU )
+FILES=$( $SEARCH | sed -e "s:/home/`$USER`/::g" | $DMENU -l 20 )
 
 if [ $? -eq 0 ] ; then
     $OPEN "$_PATH/$FILES"

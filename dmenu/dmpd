@@ -10,9 +10,11 @@ MPC="mpc --quiet -p ${1:-6600}"
 # max height for vertical menu
 height=20
 
+. $HOME/.config/dmenurc
+
 DMENU() {
     # Vertical menu if $3 is given
-    echo -e "$1" | dmenu -i -b -p "$2" ${3:+"-l" "$3"}
+    echo -e "$1" | $DMENU -b -p "$2" ${3:+"-l" "$3"}
 }
 
 # Show name and title together: all of my tracks have one but not the

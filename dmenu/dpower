@@ -2,6 +2,8 @@
 
 # Power management for dmenu
 
+. $HOME/.config/dmenurc
+
 COMMANDS="
 suspend\n
 poweroff\n
@@ -11,6 +13,6 @@ hybrid-sleep\n
 halt\n
 "
 
-command=$(echo $COMMANDS | dmenu -i)
+command=$(echo $COMMANDS | $DMENU -i)
 [ "$command" = "" ] && exit 1
 sudo systemctl $command && exit 0
