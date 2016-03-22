@@ -3,7 +3,7 @@
 
 from sys import argv
 
-wordlist = '/usr/share/dict/words'
+wordlist = '/usr/share/dict/cracklib-small'
 
 script, word = argv
 wordlength = len(word)
@@ -29,5 +29,5 @@ for w in lengthwords:
     if letters == characters:
       solutions.append(w)
   letters = []
-print solutions
+print(solutions)
 
