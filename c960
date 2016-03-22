@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 
 # Create a starting position for Fischerrandom Chess.
 
@@ -45,7 +45,7 @@ def pos_gen():
 
     fen = pieces + "/" + pawns + spaces + pawns.upper() + pieces.upper() + start
 
-    print fen
+    print(fen)
 
 for i in range(output):
     pos_gen()
