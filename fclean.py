@@ -55,6 +55,9 @@ def check_filenames(fname_dict):
 
 transform_dict = clean_filenames(get_files(".", recursive))
 if not check_filenames(transform_dict):
-    for filename in transform_dict:
+    # rename files in reverse order of length of original filename
+    # this ensures we never try to rename a folder before a file in that folder
+    # so we don't have to worry about dealing with that case
+    for filename in sorted(transform_dict, key=len, reverse=False):
         os.rename(filename, transform_dict[filename])
 
