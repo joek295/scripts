@@ -53,7 +53,7 @@ def clean_filenames(files):
 def check_filenames(fname_dict):
     return len(fname_dict) != len(set(fname_dict.values()))
 
-transform_dict = clean_filenames(get_files(".", False))
+transform_dict = clean_filenames(get_files(".", recursive))
 if not check_filenames(transform_dict):
     for filename in transform_dict:
         os.rename(filename, transform_dict[filename])
