@@ -1,5 +1,15 @@
 #!/usr/bin/env python
 
+# fclean.py: filename cleaner
+# author: Joe Kitchen
+# created: 27/10/2018
+# license: unlicense
+
+# This is free and unencumbered software released into the public
+# domain.
+
+# For full license, see the UNLICENSE file.
+
 # TODO: implement --verbose, --dry-run
 # TODO: add ability to run on folders other than current working directory
 
