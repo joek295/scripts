@@ -54,7 +54,10 @@ def check_filenames(fname_dict):
     return len(fname_dict) != len(set(fname_dict.values()))
 
 transform_dict = clean_filenames(get_files(".", recursive))
-if not check_filenames(transform_dict):
+if check_filenames(transform_dict):
+    print("Error: filename collision")
+    sys.exit(1)
+else:
     # rename files in reverse order of length of original filename
     # this ensures we never try to rename a folder before a file in that folder
     # so we don't have to worry about dealing with that case
