@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-# TODO: implement --recursive, --verbose
+# TODO: implement --verbose, --dry-run
+# TODO: add ability to run on folders other than current working directory
 
 import getopt
 import os
@@ -30,30 +31,28 @@ for opt, arg in options:
         verbose = True
 
 def get_files(folder, recursive):
-    files = []
+    transform_dict = {}
     if recursive is True:
         for root, directories, filenames in os.walk(folder):
             for directory in directories:
-                files.append(os.path.join(root, directory))
+                transform_dict[os.path.join(root, directory)] = os.path.join(root, clean_filename(directory))
             for filename in filenames:
-                files.append(os.path.join(root, filename))
+                transform_dict[os.path.join(root, filename)] = os.path.join(root, clean_filename(filename))
     else:
-        files = os.listdir(folder)
-    return files
+        for filename in os.listdir(folder):
+            transform_dict[filename] = clean_filename(filename)
+    return transform_dict
 
-def clean_filenames(files):
-    transformations = {}
-    for file in files:
-        output = re.sub("\s+", "_", file)
-        output = re.sub("[^\w\-\./]", "", output)
-        output = str.lower(output)
-        transformations[file] = output
-    return transformations
+def clean_filename(filename):
+    transformed = re.sub("\s+", "_", filename)
+    transformed = re.sub("[^\w\-\./]", "", transformed)
+    transformed = str.lower(transformed)
+    return transformed
 
 def check_filenames(fname_dict):
     return len(fname_dict) != len(set(fname_dict.values()))
 
-transform_dict = clean_filenames(get_files(".", recursive))
+transform_dict = get_files(".", recursive)
 if check_filenames(transform_dict):
     print("Error: filename collision")
     sys.exit(1)
@@ -61,6 +60,6 @@ else:
     # rename files in reverse order of length of original filename
     # this ensures we never try to rename a folder before a file in that folder
     # so we don't have to worry about dealing with that case
-    for filename in sorted(transform_dict, key=len, reverse=False):
+    for filename in sorted(transform_dict, key=len, reverse=True):
         os.rename(filename, transform_dict[filename])
 
