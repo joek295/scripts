@@ -22,14 +22,15 @@ if (!$ARGV[0]){
 }
 
 my $firstpage;
-my $url;
+my $url = "";
 my $output;
 my @lines;
+my @failed_files;
 
 foreach ( @ARGV ){
     $firstpage = `pdftotext -l 1 $_ -`;
     @lines = split(/\n/, $firstpage);
-    $output = $_ . ".cite";
+    ($output = $_) =~ s/.pdf/.cite/;
 
     # Grab the URL
     foreach(@lines){
@@ -40,6 +41,13 @@ foreach ( @ARGV ){
     }
 
     # transform the url to the citation url
-    $url =~ s/stable/citation\/text/;
-    `curl -o $output $url`;
+    if ($url =~ m/\S*jstor\.org\S*/) {
+        $url =~ s/stable/citation\/text/;
+        `curl -o $output $url`;
+    } else {
+        push @failed_files, $_;
+        
+    }
 }
+
+print join("\n", @failed_files), "\n";
